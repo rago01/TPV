@@ -39,7 +39,15 @@
 
     include "modulos/cabezote.php";
     include "modulos/menu.php";
-    include "modulos/contenido.php";
+    if (isset($_GET["ruta"])){
+        if ($_GET["ruta"]=="inicio" ||
+            $_GET["ruta"]=="productos" ||
+            $_GET["ruta"]=="ventas" ||
+            $_GET["ruta"]=="crear-venta" ||
+            $_GET["ruta"]=="usuaris" ) {
+            include "modulos/".$_GET["ruta"].".php";
+        }
+    }
     include "modulos/footer.php"
 
 ?>

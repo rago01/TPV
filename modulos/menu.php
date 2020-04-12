@@ -5,13 +5,13 @@
     <section class="sidebar">
         <ul class="sidebar-menu">
             <li class="active">
-                <a href="">
+                <a href="inicio">
                     <i class="fa fa-home"></i>
                     <span>Inicio</span>
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="usuarios">
                     <i class="fa fa-user"></i>
                     <span>Personas</span>
                 </a>
@@ -26,37 +26,37 @@
                 </a>
                 <ul class="treeview-menu">
                     <li>
-                        <a href="">
+                        <a href="categorias">
                             <i class="fa fa-circle-o"></i>
                             <span>Categorias</span>
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="productos">
                             <i class="fa fa-circle-o"></i>
                             <span>Producto</span>
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="movimientos">
                             <i class="fa fa-circle-o"></i>
                             <span>Movimientos inventario</span>
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="proveedores">
                             <i class="fa fa-circle-o"></i>
                             <span>Proveedores</span>
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="ingredientes">
                             <i class="fa fa-circle-o"></i>
                             <span>Ingredientes</span>
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="unidades">
                             <i class="fa fa-circle-o"></i>
                             <span>Unidades</span>
                         </a>
