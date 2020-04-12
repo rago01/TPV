@@ -16,12 +16,12 @@
   <link rel="stylesheet" href="vistas/dist/css/AdminLTE.css">
   <!-- AdminLTE Skins. -->
   <link rel="stylesheet" href="vistas/dist/css/skins/_all-skins.min.css">
-
+  <link rel="icon" href="/css/master.css">
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-    
+
     <!-- PLUGINS JAVASCRIPT -->
-    
+
     <!-- jQuery 3 -->
     <script src="vistas/bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap 3.3.7 -->
@@ -30,12 +30,12 @@
     <script src="vistas/bower_components/fastclick/lib/fastclick.js"></script>
     <!-- AdminLTE App -->
     <script src="vistas/dist/js/adminlte.min.js"></script>
-    
+
 </head>
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
-<?php 
+<?php
 
     include "modulos/cabezote.php";
     include "modulos/menu.php";
@@ -44,14 +44,24 @@
             $_GET["ruta"]=="productos" ||
             $_GET["ruta"]=="ventas" ||
             $_GET["ruta"]=="crear-venta" ||
-            $_GET["ruta"]=="usuaris" ) {
+            $_GET["ruta"]=="usuarios" ||
+            $_GET["ruta"]=="categorias" ||
+            $_GET["ruta"]=="movimientos" ||
+            $_GET["ruta"]=="proveedores" ||
+            $_GET["ruta"]=="unidades" ||
+            $_GET["ruta"]=="reportes"
+          ) {
             include "modulos/".$_GET["ruta"].".php";
+        }else{
+          include "modulos/404.php";
         }
+    }else{
+      include "modulos/inicio.php";
     }
-    include "modulos/footer.php"
+    include "modulos/footer.php";
 
 ?>
-    
+
 </div>
 <!-- ./wrapper -->
 <script src="vistas/js/plantilla.js">

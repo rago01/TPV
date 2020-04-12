@@ -1,4 +1,4 @@
-<?php 
+<?php
 ?>
 
 <aside class="main-sidebar">
@@ -13,7 +13,7 @@
             <li>
                 <a href="usuarios">
                     <i class="fa fa-user"></i>
-                    <span>Personas</span>
+                    <span>Usuarios</span>
                 </a>
             </li>
             <li class="treeview">
@@ -61,11 +61,11 @@
                             <span>Unidades</span>
                         </a>
                     </li>
-                    
+
                 </ul>
             </li>
             <li>
-                <a href="">
+                <a href="reportes">
                     <i class="fa fa-dashboard"></i>
                     <span>Reportes</span>
                 </a>
