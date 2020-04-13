@@ -34,9 +34,10 @@
 </head>
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
 <!-- Site wrapper -->
-<div class="wrapper">
-<?php
 
+<?php
+if (isset($_SESSION['AUT']) && $_SESSION['AUT'] == 'OK') {
+echo '<div class="wrapper">';
     include "modulos/cabezote.php";
     include "modulos/menu.php";
     if (isset($_GET["ruta"])){
@@ -59,11 +60,12 @@
       include "modulos/inicio.php";
     }
     include "modulos/footer.php";
-
+ echo'</div>';
+}else{
+  include "modulos/login.php";
+}
 ?>
 
-</div>
-<!-- ./wrapper -->
 <script src="vistas/js/plantilla.js">
 
 </script>
