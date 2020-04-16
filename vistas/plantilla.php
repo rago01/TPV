@@ -32,7 +32,7 @@
     <script src="vistas/dist/js/adminlte.min.js"></script>
 
 </head>
-<body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
+<body class="hold-transition skin-blue sidebar-collapse sidebar-mini login-page">
 <!-- Site wrapper -->
 
 <?php
