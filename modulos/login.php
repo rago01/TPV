@@ -26,7 +26,7 @@
       </div>
       <?php
 
-      $login = new ControladorUsuario();
+      $login = new ControladorUsuarios();
       $login -> ctrIngresoUsuario();
 
 
