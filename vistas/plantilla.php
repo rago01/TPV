@@ -1,5 +1,5 @@
 <?php
-
+include('../modelos/conexion.php');
 session_start();
 
 ?>
@@ -20,6 +20,8 @@ session_start();
   <link rel="stylesheet" href="vistas/bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="vistas/dist/css/AdminLTE.css">
+  <link rel="stylesheet" href="vistas/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+
   <!-- AdminLTE Skins. -->
   <link rel="stylesheet" href="vistas/dist/css/skins/_all-skins.min.css">
   <link rel="icon" href="/css/master.css">
@@ -36,6 +38,10 @@ session_start();
     <script src="vistas/bower_components/fastclick/lib/fastclick.js"></script>
     <!-- AdminLTE App -->
     <script src="vistas/dist/js/adminlte.min.js"></script>
+    <!-- Data Table -->
+    <script src="vistas/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="vistas/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
 
 </head>
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini login-page">
@@ -56,7 +62,8 @@ echo '<div class="wrapper">';
             $_GET["ruta"]=="movimientos" ||
             $_GET["ruta"]=="proveedores" ||
             $_GET["ruta"]=="unidades" ||
-            $_GET["ruta"]=="reportes"
+            $_GET["ruta"]=="reportes" ||
+            $_GET["ruta"]="logout"
           ) {
             include "modulos/".$_GET["ruta"].".php";
         }else{

@@ -1,9 +1,7 @@
-<div class="" id="back">
-
-</div>
+<div id="back"></div>
 <div class="login-box">
   <div class="login-logo">
-    <img src="vistas/img/logo.png"  class="img-responsive" style="padding: 30px 100px 0px 100px " alt="">
+    <img src="vistas/img/logo.png"  class="img-responsive" style="padding: 30px 100px 0px 100px ">
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
@@ -18,9 +16,9 @@
         <input type="password" class="form-control" placeholder="Clave" name="clave" required>
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
-      <div class="row">
-        <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Ingresar</button>
+      <div class="row ">
+        <div class="col-xs-12 ">
+          <button type="submit" class="btn btn-warning btn-block btn-flat">Ingresar</button>
         </div>
         <!-- /.col -->
       </div>
