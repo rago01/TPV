@@ -11,6 +11,21 @@ class ControladorUsuarios{
               $respuesta = ModeloUsuarios::mdlMostrarUsuarios($tabla,$item,$valor);
 
               echo var_dump($respuesta);
+              if($respuesta["doc"] == $_POST["user"] && $respuesta["clave"] == $_POST["clave"]){
+
+      					$_SESSION['AUT'] = "OK";
+
+      					echo '<script>
+
+      						window.location = "inicio";
+
+      					</script>';
+
+      				}else{
+
+      					echo '<br><div class="alert alert-danger">Error al ingresar, vuelve a intentarlo</div>';
+
+      				}
           }
         }
     }
