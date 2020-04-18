@@ -20,8 +20,9 @@ session_start();
   <link rel="stylesheet" href="vistas/bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="vistas/dist/css/AdminLTE.css">
+  <!--Data Tables-->
   <link rel="stylesheet" href="vistas/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-
+  <link rel="stylesheet" href="vistas/bower_components/datatables.net-bs/css/responsive.bootstrap.min.css">
   <!-- AdminLTE Skins. -->
   <link rel="stylesheet" href="vistas/dist/css/skins/_all-skins.min.css">
   <link rel="icon" href="/css/master.css">
@@ -41,6 +42,8 @@ session_start();
     <!-- Data Table -->
     <script src="vistas/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="vistas/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="vistas/bower_components/datatables.net-bs/js/dataTables.responsive.min.js"></script>
+    <script src="vistas/bower_components/datatables.net-bs/js/responsive.bootstrap.min.js"></script>
 
 
 </head>
