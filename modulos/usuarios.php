@@ -21,11 +21,11 @@
               Agregar usuario
             </button>
         </div>
-        <div class="box-body">
-          <table class="table table-bordered table-striped tablas">
+        <div class="box-body table">
+          <table class="table table-bordered table-striped dt-responsive tablas">
             <thead>
               <tr>
-                <th>#</th>
+                <th style="width:10px;">#</th>
                 <th>USUARIO</th>
                 <th>CONTACTO</th>
                 <th>ESTADO</th>
@@ -68,14 +68,14 @@
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"> <strong> Nombres</strong> </span>
-                <input type="text" class="form-control input-lg" name="nombre" value="">
+                <input type="text" class="form-control input-lg" name="nombres" required>
               </div>
             </div>
 
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"> <strong>Apellidos</strong> </span>
-                <input type="text" class="form-control input-lg" name="nombre" placeholder="" value="">
+                <input type="text" class="form-control input-lg" name="apellidos" placeholder="" value="" required>
               </div>
             </div>
 
@@ -84,14 +84,17 @@
                 <span class="input-group-addon"> <strong>Tipo de documento</strong> </span>
                 <select class="form-control input-lg col-3" name="" required>
                   <option value=""></option>
-                  <option value="CC">CC</option>
-                  <option value="CE">CE</option>
-                  <option value="TI">TI</option>
-                  <option value="CC">RC</option>
+                  <option value="CC">Cedula de Ciudadania</option>
+                  <option value="CE">Cedula de Extranjeria</option>
+                  <option value="TI">Tarjeta de Identidad</option>
+                  <option value="CC">Registro Civil</option>
                 </select>
-
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
                 <span class="input-group-addon"> <strong>Identificación</strong> </span>
-                <input type="number" class="form-control input-lg" name="" value="">
+                <input type="number" class="form-control input-lg" name="doc" required>
               </div>
             </div>
 
@@ -115,13 +118,13 @@
           <div class="form-group">
             <div class="input-group">
               <span class="input-group-addon"> <strong>Clave</strong> </span>
-              <input type="password" class="form-control input-lg" name="clave1" placeholder="" value="">
+              <input type="password" class="form-control input-lg" name="clave1" required>
             </div>
           </div>
           <div class="form-group">
             <div class="input-group">
               <span class="input-group-addon"> <strong>Confirmar clave</strong> </span>
-              <input type="password" class="form-control input-lg" name="clave2" placeholder="" value="">
+              <input type="password" class="form-control input-lg" name="clave2" required>
             </div>
           </div>
         </div>
@@ -130,6 +133,13 @@
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
           <button type="sumbit"  class="btn btn-primary">Agregar usuario</button>
         </div>
+
+        <?php
+
+        $crearUsuario = new ControladorUsuarios();
+        $crearUsuario -> ctrCrearUsuario();
+
+        ?>
 
       </div>
      </form>
