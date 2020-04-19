@@ -8,7 +8,7 @@
     <section class="content-header">
       <h1>
         INICIO
-        <small>¡Bienvenido!</small>
+        <small><?php //echo var_dump($_SESSION) ?></small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -49,7 +49,7 @@
   </div>
   <!-- /.content-wrapper -->
 
-  
+
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

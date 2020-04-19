@@ -28,7 +28,7 @@
             <li class="dropdown user user-menu">
                 <a href="" class="dropdown-toggle" data-toggle="dropdown">
                     <img src="vistas/img/usuarios/default/anonymous.png" class="user-image" alt="">
-                    <span class="hidden-xs">Usuario Administrados</span>
+                    <span class="hidden-xs"><?php echo $_SESSION['AUT']['nombres']; echo $_SESSION['AUT']['apellidos']?></span>
                 </a>
                 <!--DROPDOWN TOGGLE-->
                 <ul class="dropdown-menu">

@@ -44,14 +44,18 @@ session_start();
     <script src="vistas/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
     <script src="vistas/bower_components/datatables.net-bs/js/dataTables.responsive.min.js"></script>
     <script src="vistas/bower_components/datatables.net-bs/js/responsive.bootstrap.min.js"></script>
+    <!-- sweet Alert -->
+    <script src="vistas/plugins/sweetalert2/sweetalert2.all.js"></script>
 
+    <!--CryptoJS-->
+    <script src ="vistas/js/sha3.js"></script>
 
 </head>
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini login-page">
 <!-- Site wrapper -->
 
 <?php
-if (isset($_SESSION['AUT']) && $_SESSION['AUT'] == 'OK') {
+if (isset($_SESSION['AUT']) && $_SESSION['AUT']['estado_user'] == '1') {
 echo '<div class="wrapper">';
     include "modulos/cabezote.php";
     include "modulos/menu.php";
