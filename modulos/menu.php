@@ -10,14 +10,25 @@
                     <span>Inicio</span>
                 </a>
             </li>
-            <li>
-                <a href="usuarios">
-                    <i class="fa fa-user"></i>
-                    <span>Usuarios</span>
-                </a>
-            </li>
+            <?php
+             $perfil = $_SESSION['AUT']['id_perfil'];
+          $sql="SELECT m.titulo,modulo FROM menu m LEFT JOIN perfiles_menus p ON p.id_menu=m.id_menu
+            WHERE p.id_perfil = $perfil ";
+            $consulta=Conexion::conectar()->prepare($sql);
+            $consulta->execute();
+            while ($perfil = $consulta->fetch()) {
+              echo '<li>
+                  <a href="'.$perfil['modulo'].'">
+                      <i class="fa fa-circle"></i>
+                      <span>'.$perfil['titulo'].'</span>
+                  </a>
+              </li>';
+
+            }
+            ?>
+       <!--
             <li class="treeview">
-                <a href="">
+                <a href="#">
                     <i class="fa fa-list-ul"></i>
                     <span>Productos</span>
                     <span class="pull-right-container">
@@ -69,7 +80,7 @@
                     <i class="fa fa-dashboard"></i>
                     <span>Reportes</span>
                 </a>
-            </li>
+            </li> -->
         </ul>
     </section>
 </aside>
