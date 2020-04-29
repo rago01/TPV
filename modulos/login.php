@@ -27,7 +27,6 @@
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">Ingresar al sistema</p>
-
     <form method="post" onsubmit="return validar()">
       <div class="form-group has-feedback">
         <input type="number" class="form-control" placeholder="Usuario o Documento" required name="user">
