@@ -85,7 +85,7 @@
                  echo'</td>
                       <td>
                         <div class="btn-group">
-                          <button class="btn btn-warning"> <i class="fa fa-pencil"></i> </button>
+                          <button class="btn btn-warning btnEditarUsuario" idUsuario="'.$usuario['id_user'].'" data-toggle="modal" data-target="#EditUser"> <i class="fa fa-pencil"></i> </button>
                           <button class="btn btn-danger"> <i class="fa fa-times"></i> </button>
                         </div>
                       </td>
@@ -94,16 +94,21 @@
           } ?>
           </table>
         </div>
-        <div class="box-footer">
-          Footer
-        </div>
       </div>
     </section>
   </div>
   <div class="modal fade" id="AddUser" role="dialog">
     <div class="modal-dialog">
-      <div class="modal-content">
-          <?php include('forms/crear_usuario.php'); ?>
-      </div>
+        <div class="modal-content">
+            <?php include('forms/crear_usuario.php'); ?>
+        </div>
+    </div>
   </div>
-</div>
+
+  <div class="modal fade" id="EditUser" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <?php include('forms/crear_usuario.php'); ?>
+        </div>
+    </div>
+  </div>

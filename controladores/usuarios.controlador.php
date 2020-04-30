@@ -4,19 +4,22 @@ class ControladorUsuarios{
 
   static public function ctrIngresoUsuario(){
         if (isset($_POST["user"])){
-          if (preg_match('/^[a-zA-Z0-9]+$/', $_POST['user']) && preg_match('/^[a-zA-Z0-9]+$/', $_POST['clave1'])) {
+          if (preg_match('/^[a-zA-Z0-9]+$/', $_POST['user']) && 
+          preg_match('/^[a-zA-Z0-9]+$/', $_POST['clave1'])) {
              $tabla = "users";
              $item = "doc";
              $valor = $_POST['user'];
               $respuesta = ModeloUsuarios::mdlMostrarUsuarios($tabla,$item,$valor);
 
-              $_SESSION['AUT'] = $respuesta;
+              
              //echo $respuesta["clave"].'<br>';
              //echo $_POST["clave1"];
              // echo var_dump($respuesta);
               if($respuesta["doc"] == $_POST["user"] && $respuesta["clave"] == $respuesta["clave"]){
 
-
+                    if ($respuesta['estado_user'] == 1) {
+                      $_SESSION['AUT'] = $respuesta;
+                    }
       					echo '<script>
 
       						window.location = "inicio";
@@ -99,6 +102,15 @@ class ControladorUsuarios{
              </script>';
            }
          }
+       }
+
+
+       //_______MOSTRAR USUARIOS 
+
+       static public function ctrMostrarUsuarios(){
+        $tabla = "users";
+        $respuesta = ModeloUsuarios::mdlMostrarUsuarios($tabla,$item,$valor);
+        return $respuesta;
        }
 }
 

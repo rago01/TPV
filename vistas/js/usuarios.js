@@ -25,7 +25,7 @@
           $("#direccion").val(respuesta["direccion"]);
           $("#email").val(respuesta["email"]);
           $("#t_doc").val(respuesta["t_doc"]);
-          $("#doc").val(respuesta["doc"]);
+          $("#doc").val(respuesta["doc"]); 
       }
 
     });

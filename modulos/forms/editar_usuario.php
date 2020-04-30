@@ -1,8 +1,9 @@
-<form role="form" method="post" enctype="multipart/form-darta" onsubmit="return validar()">
-<div class="modal-header" style="background: #3c8dbc; color:white;">
-<button type="button" class="close" data-dismiss="modal">&times;</button>
-  <h4 class="modal-title">Editar usuario</h4>
-</div>
+
+        <form role="form" method="post" enctype="multipart/form-darta" onsubmit="return validar()">
+          <div class="modal-header" style="background: #3c8dbc; color:white;">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Editar usuario</h4>
+          </div>
 
 <div class="modal-body">
   <div class="box-body">
@@ -96,10 +97,9 @@
 
 <?php
 
-$crearUsuario = new ControladorUsuarios();
-$crearUsuario -> ctrCrearUsuario();
+$editarUsuario = new ControladorUsuarios();
+$editarUsuario -> ctrEditarUsuario();
 
 ?>
-
-</div>
-</form>
+       </div>
+      </form>

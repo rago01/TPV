@@ -7,7 +7,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header text-center">
       <h1>
-        GESTIÓN DE CATEGORÍAS
+        GESTIÓN DE PRODUCTOS
       </h1>
       <ol class="breadcrumb">
         <li><a href="inicio"><i class="fa fa-dashboard"></i>Inicio</a></li>
@@ -18,7 +18,7 @@
       <div class="box">
         <div class="box-header with-border">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddUser">
-              Agregar usuario
+              Agregar producto
             </button>
         </div>
         <div class="box-body table">
@@ -26,39 +26,29 @@
             <thead>
               <tr>
                 <th style="width:10px;">ID</th>
-                <th>NOMBRE CATEGORÍA</th>
+                <th>PRODUCTO</th>
                 <th>DESCRIPCION</th>
-                <th>ESTADO</th>
                 <th>ACCIONES</th>
               </tr>
             </thead>
             <?php
-           $sql="SELECT id_categoria,nombre_categoria,descripcion_categoria,imagen,estado FROM categorias_productos";
+           $sql="SELECT id_producto,nombre_producto,descripcion_producto,imagen,estado FROM productos_productos";
             $consulta=Conexion::conectar()->prepare($sql);
             $consulta->execute();
             $i = 1;
-            while ($categoria = $consulta->fetch()) {
+            while ($producto = $consulta->fetch()) {
                 echo
                 '<tbody>
                     <tr>
-                      <td>'.$categoria['id_categoria'].'</td>
+                      <td>'.$producto['id_producto'].'</td>
                       <td>
-                        <p>'.$categoria['nombre_categoria'].'</p>
-                        <p> <img src="'.$categoria['imagen'].'" class="img-responsive"> </p>
+                        <p>'.$producto['nombre_producto'].'</p>
+                        <p> <img src="'.$producto['imagen'].'" class="img-responsive"> </p>
                         ';
                   echo'</td>
                       <td>
-                        <p>'.$categoria['descripcion_categoria'].'</p>
+                        <p>'.$producto['descripcion_producto'].'</p>
                       </td>
-                      <td>';
-                        if ($categoria['estado'] == 1) {
-
-                        echo '<button class="btn btn-success btn-md " >Activo</button>';
-
-                      }else {
-                         echo '<button class="btn btn-danger btn-md " >Inactivo</button>';
-                      }
-                 echo'</td>
                       <td>
                         <div class="btn-group">
                           <button class="btn btn-warning"> <i class="fa fa-pencil"></i> </button>
