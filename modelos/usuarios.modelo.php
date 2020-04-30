@@ -19,7 +19,6 @@ class ModeloUsuarios{
       $stmt -> execute();
       return $stmt -> fetchAll();
     }
-
     $stmt -> close();
     $stmt = null;
   }

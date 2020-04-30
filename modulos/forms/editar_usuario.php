@@ -10,7 +10,7 @@
     <div class="form-group">
       <div class="input-group">
         <span class="input-group-addon"> <strong> Nombres</strong> </span>
-        <input type="text" class="form-control input-lg" id="nombres" name="nombres" required>
+        <input type="text" class="form-control input-lg" id="nombres" name="nombres" value="" required>
       </div>
     </div>
 
@@ -36,27 +36,27 @@
     <div class="form-group">
       <div class="input-group">
         <span class="input-group-addon"> <strong>Identificación</strong> </span>
-        <input type="number" class="form-control input-lg" name="doc" id="doc" required>
+        <input type="number" class="form-control input-lg" name="doc" id="doc" value="" required>
       </div>
     </div>
     <div class="form-group">
       <div class="input-group">
         <span class="input-group-addon"> <strong>Dirección</strong> </span>
-        <input type="text" class="form-control input-lg" name="direccion" id="direccion" required>
+        <input type="text" class="form-control input-lg" name="direccion" value="" id="direccion" required>
       </div>
     </div>
 
     <div class="form-group">
       <div class="input-group">
         <span class="input-group-addon"> <strong>Celular</strong> </span>
-        <input type="text" class="form-control input-lg" name="celular" id="celular" required>
+        <input type="text" class="form-control input-lg" name="celular" value="" id="celular" required>
       </div>
     </div>
 
     <div class="form-group">
       <div class="input-group">
         <span class="input-group-addon"> <strong>Email</strong> </span>
-        <input type="email" class="form-control input-lg" name="email" id="email" required>
+        <input type="email" class="form-control input-lg" name="email" value="" id="email" required>
       </div>
     </div>
 
@@ -96,10 +96,10 @@
 </div>
 
 <?php
-
+/*
 $editarUsuario = new ControladorUsuarios();
 $editarUsuario -> ctrEditarUsuario();
-
+*/
 ?>
        </div>
       </form>

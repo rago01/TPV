@@ -2,14 +2,13 @@
 
  $('.btnEditarUsuario').click(function(){
 
-    var idUser = $(this).attr("idUsuario");
-    console.log("idUsuario", idUser);
+    var idUsuario = $(this).attr("idUsuario");
+    console.log("idUsuario", idUsuario);
 
     var datosUser = new FormData();
-    datosUser.append("idUsuario", idUser);
+    datosUser.append("idUsuario", idUsuario);
 
     $.ajax({
-
       url:"ajax/usuarios.ajax.php",
       method: "POST",
       data: datosUser,
@@ -18,6 +17,7 @@
       processData: false,
       dataType: "json",
       success: function(respuesta){
+      console.log(respuesta);
           $("#nombres").val(respuesta["nombres"]);
           $("#apellidos").val(respuesta["apellidos"]);
           $("#perfil").val(respuesta["perfil"]);
@@ -25,7 +25,7 @@
           $("#direccion").val(respuesta["direccion"]);
           $("#email").val(respuesta["email"]);
           $("#t_doc").val(respuesta["t_doc"]);
-          $("#doc").val(respuesta["doc"]); 
+          $("#doc").val(respuesta["doc"]);
       }
 
     });

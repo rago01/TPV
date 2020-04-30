@@ -108,7 +108,7 @@
   <div class="modal fade" id="EditUser" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
-            <?php include('forms/crear_usuario.php'); ?>
+            <?php include('forms/editar_usuario.php'); ?>
         </div>
     </div>
   </div>
