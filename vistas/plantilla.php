@@ -1,5 +1,5 @@
 <?php
-include('../modelos/conexion.php');
+//include('../modelos/conexion.php');
 session_start();
 
 ?>

@@ -16,19 +16,23 @@ class ControladorUsuarios{
               if($respuesta["doc"] == $_POST["user"] && $respuesta["clave"] == $respuesta["clave"]){
 
                     if ($respuesta['estado_user'] == 1) {
+
                       $_SESSION['AUT'] = $respuesta;
-                    }
-      					echo '<script>
 
-      						window.location = "inicio";
+                      date_default_timezone_set('America/Bogota');
+                      $fecha = date('Y-m-d');
+						          $hora = date('H:i:s');
 
-      					</script>';
-
-      				}else{
-
-      					echo '<br><div class="alert alert-danger">Error al ingresar, vuelve a intentarlo</div>';
-
-      				}
+            					echo '<script>
+            						      window.location = "inicio";
+            					      </script>';
+            				}else{
+      						echo '<br>
+      							<div class="alert alert-danger">El usuario aún no está activado</div>';
+      					}
+              }else{
+            		echo '<br><div class="alert alert-danger">Error al ingresar, vuelve a intentarlo</div>';
+            }
           }
         }
     }
@@ -40,13 +44,12 @@ class ControladorUsuarios{
         preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["apellidos"])){
 
             echo $tabla = "users";
-            $claveA2="";
-                if ($_POST["clave1"]==$_POST["clave2"]){
-                  if ($_POST["clave1"]!=""){
-                    $claveA2=$_POST["clave1"];
-                  }
-                }
-             $datos = array('perfil' => $_POST['perfil'],
+
+
+             $encriptar = crypt($_POST["clave1"], '$6$rounds=5000$usesomesillystringforsalt$');
+
+             $datos = array('id_user' => $_POST['id_user'],
+                            'perfil' => $_POST['perfil'],
                             'nombres' => $_POST['nombres'],
                             'apellidos' => $_POST['apellidos'],
                             't_doc' => $_POST['t_doc'],
@@ -54,12 +57,12 @@ class ControladorUsuarios{
                             'email' => $_POST['email'],
                             'direccion' => $_POST['direccion'],
                             'celular' => $_POST['celular'],
-                            'clave' => $claveA2,
+                            'clave' => $encriptar,
                             'estado_user' => "1");
-                            echo '<br>' .var_dump($datos);
+                            //echo '<br>' .var_dump($datos);
 
             $respuesta = ModeloUsuarios::mdlIngresarUsuario($tabla, $datos);
-
+            var_dumo($respuesta);
             if ($respuesta == "ok") {
               echo'
               <script>
@@ -105,11 +108,101 @@ class ControladorUsuarios{
 
        //_______MOSTRAR USUARIOS
 
-       static public function ctrMostrarUsuarios(){
+       static public function ctrMostrarUsuarios($item, $valor){
         $tabla = "users";
         $respuesta = ModeloUsuarios::mdlMostrarUsuarios($tabla,$item,$valor);
         return $respuesta;
        }
-}
 
+
+       //________EDITAR USUARIO
+
+      static public function ctrEditarUsuario(){
+         if (isset($_POST['newDoc'])) {
+           if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["newNombres"])){
+
+             $tabla = "users";
+             if($_POST['clave1'] != ''){
+                if (preg_match('/^[a-zA-Z0-9]+$/', $_POST['clave1'])) {
+                  $encriptar = crypt($_POST["clave1"], '$5$rounds=5000$usesomesillystringforsalt$');
+                }else {
+                  echo'<script>
+
+								swal({
+									  type: "error",
+									  title: "¡La contraseña no puede ir vacía o llevar caracteres especiales!",
+									  showConfirmButton: true,
+									  confirmButtonText: "Cerrar"
+									  }).then(function(result){
+										if (result.value) {
+
+										window.location = "usuarios";
+
+										}
+									})
+
+						  	</script>';
+                }
+           }else {
+           $encriptar = $_POST['passwordActual'];
+         }
+
+           $datos = array('id_user' => $_POST['id_user'],
+                          'perfil' => $_POST['newPerfil'],
+                          'nombres' => $_POST['newNombres'],
+                          'apellidos' => $_POST['newApellidos'],
+                          't_doc' => $_POST['newT_doc'],
+                          'doc' => $_POST['newDoc'],
+                          'email' => $_POST['newEmail'],
+                          'direccion' => $_POST['newDireccion'],
+                          'celular' => $_POST['newCelular'],
+                          'clave' => $encriptar);
+                          echo '<br> ' .var_dump($datos);
+
+                            $respuesta = ModeloUsuarios::mdlEditarUsuario($tabla, $datos);
+                            echo '<br> <br>' .var_dump($respuesta);
+                  if ($respuesta == "ok") {
+                    echo'
+                    <script>
+                          swal({
+
+                           type: "success",
+                           title: "¡El usuario ha sido editador correctamente!",
+                           showConfirmButton: true,
+                           confirmButtonText: "Cerrar"
+
+                          }).then(function(result){
+
+                           if(result.value){
+
+                             window.location = "usuarios";
+
+                           }
+
+                          });
+                    </script>';
+                  }
+         }else{
+
+				echo'<script>
+
+					swal({
+						  type: "error",
+						  title: "¡El nombre no puede ir vacío o llevar caracteres especiales!",
+						  showConfirmButton: true,
+						  confirmButtonText: "Cerrar"
+						  }).then(function(result){
+							if (result.value) {
+
+							window.location = "usuarios";
+
+							}
+						})
+
+			  	</script>';
+
+			     }
+         }
+     }
+}
 ?>

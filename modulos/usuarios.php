@@ -1,24 +1,3 @@
-  <script>
-			function validar(){
-				if (document.forms[0].nombres.value == ""){
-					alert("NO PODEMOS CREAR EL USUARIO SIN UN NOMBRE");
-					document.forms[0].nombres.focus();				// Ubicar el cursor
-					return(false);
-				}
-				if (document.forms[0].clave1.value == document.forms[0].clave2.value ){
-					if (document.forms[0].clave1.value != ""){
-						document.forms[0].clave1.value = CryptoJS.SHA3(document.forms[0].clave1.value);
-						document.forms[0].clave2.value = document.forms[0].clave1.value;
-					}
-				}else{
-					alert("Error en confirmacion de la clave!");
-					document.forms[0].clave1.value = "";
-					document.forms[0].clave2.value = "";
-					document.forms[0].clave1.focus();				// Ubicar el cursor
-					return(false);
-				}
-			}
-		</script>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -50,14 +29,19 @@
                 <th>ACCIONES</th>
               </tr>
             </thead>
+            <tbody>
             <?php
-            $sql="SELECT id_user,id_perfil,nombres,apellidos,t_doc,doc,email,celular,direccion,estado_user FROM users";
+            $item = null;
+            $valor = null;
+
+            $usuarios = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
+
+            /*$sql="SELECT id_user,id_perfil,nombres,apellidos,t_doc,doc,email,celular,direccion,estado_user FROM users";
             $consulta=Conexion::conectar()->prepare($sql);
-            $consulta->execute();
+            $consulta->execute(); */
             $i = 1;
-            while ($usuario = $consulta->fetch()) {
-                echo
-                '<tbody>
+          foreach ($usuarios as $key => $usuario) {
+                echo'
                     <tr>
                       <td>'.$usuario['id_user'].'</td>
                       <td>
@@ -77,38 +61,34 @@
                       <td>';
                         if ($usuario['estado_user'] == 1) {
 
-                        echo '<button class="btn btn-success btn-md " >Activo</button>';
+                        echo '<button class="btn btn-success btn-md btnActivar" id_user="'.$usuario['id_user'].'" estado_user="0">Activo</button>';
 
                       }else {
-                         echo '<button class="btn btn-danger btn-md " >Inactivo</button>';
+                         echo '<button class="btn btn-danger btn-md btnActivar" id_user="'.$usuario['id_user'].'" estado_user="1">Inactivo</button>';
                       }
                  echo'</td>
                       <td>
                         <div class="btn-group">
-                          <button class="btn btn-warning btnEditarUsuario" idUsuario="'.$usuario['id_user'].'" data-toggle="modal" data-target="#EditUser"> <i class="fa fa-pencil"></i> </button>
+                          <button class="btn btn-warning btnEditarUsuario" id_user="'.$usuario['id_user'].'"
+                          data-toggle="modal" data-target="#EditUser"> <i class="fa fa-pencil"></i> </button>
                           <button class="btn btn-danger"> <i class="fa fa-times"></i> </button>
                         </div>
                       </td>
                     </tr>
-                  </tbody>';
+                  ';
           } ?>
+            </tbody>
           </table>
         </div>
       </div>
     </section>
   </div>
-  <div class="modal fade" id="AddUser" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <?php include('forms/crear_usuario.php'); ?>
-        </div>
-    </div>
-  </div>
 
-  <div class="modal fade" id="EditUser" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <?php include('forms/editar_usuario.php'); ?>
-        </div>
-    </div>
-  </div>
+          <?php //INCLUIR FORMULARIO PARA CREACION
+          include('forms/crear_usuario.php');
+          ?>
+
+
+          <?php //INCLUIR FORMULARIO PARA EDICION
+          include('forms/editar_usuario.php');
+          ?>

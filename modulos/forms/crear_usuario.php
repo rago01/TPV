@@ -1,4 +1,6 @@
-
+<div class="modal fade" id="AddUser" role="dialog">
+  <div class="modal-dialog">
+      <div class="modal-content">
         <form role="form" method="post" enctype="multipart/form-darta" onsubmit="return validar()">
           <div class="modal-header" style="background: #3c8dbc; color:white;">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -89,7 +91,7 @@
           </div>
         </div>
       </div>
-
+    </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
         <button type="submit"  class="btn btn-primary">Agregar usuario</button>
@@ -101,6 +103,7 @@
         $crearUsuario -> ctrCrearUsuario();
 
         ?>
-
-          </div>
-        </form>
+      </form>
+    </div>
+  </div>
+</div>
