@@ -71,7 +71,7 @@
                         <div class="btn-group">
                           <button class="btn btn-warning btnEditarUsuario" id_user="'.$usuario['id_user'].'"
                           data-toggle="modal" data-target="#EditUser"> <i class="fa fa-pencil"></i> </button>
-                          <button class="btn btn-danger"> <i class="fa fa-times"></i> </button>
+                          <button class="btn btn-danger btnEliminarUsuario" id_user="'.$usuario['id_user'].'"> <i class="fa fa-times"></i> </button>
                         </div>
                       </td>
                     </tr>

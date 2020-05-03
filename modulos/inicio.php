@@ -8,7 +8,8 @@
     <section class="content-header">
       <h1>
         INICIO
-        <small><?php //echo var_dump($_SESSION) ?></small>
+        <small><?php //echo var_dump($_SESSION)
+              ?></small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>

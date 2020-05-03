@@ -96,7 +96,7 @@ REGISTRAR USUARIO
     if($stmt -> execute()){
 			return "ok";
 		}else{
-			return "error";
+			return $sql;
 		}
 
 		$stmt -> close();

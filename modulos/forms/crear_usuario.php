@@ -38,7 +38,7 @@
           <div class="form-group">
             <div class="input-group">
               <span class="input-group-addon"> <strong>Identificación</strong> </span>
-              <input type="number" class="form-control input-lg" name="doc" required>
+              <input type="number" class="form-control input-lg" name="doc" id="nuevoDoc" required>
             </div>
           </div>
           <div class="form-group">
@@ -82,12 +82,6 @@
           <div class="input-group">
             <span class="input-group-addon"> <strong>Clave</strong> </span>
             <input type="password" class="form-control input-lg" name="clave1" required>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="input-group">
-            <span class="input-group-addon"> <strong>Confirmar clave</strong> </span>
-            <input type="password" class="form-control input-lg" name="clave2" required>
           </div>
         </div>
       </div>

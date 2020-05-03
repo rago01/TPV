@@ -87,12 +87,6 @@
           <input type="hidden" name="passwordActual" id="passwordActual" value="">
         </div>
       </div>
-      <div class="form-group">
-        <div class="input-group">
-          <span class="input-group-addon"> <strong>Confirmar clave</strong> </span>
-          <input type="password" class="form-control input-lg" name="clave2" >
-        </div>
-      </div>
     </div>
   </div>
 

@@ -1,4 +1,4 @@
-<script>
+<!--<script>
 			function validar(){
 				if (document.forms[0].nombres.value == ""){
 					alert("NO PODEMOS CREAR EL USUARIO SIN UN NOMBRE");
@@ -18,7 +18,7 @@
 					return(false);
 				}
 			}
-</script>
+</script>  -->
 <div id="back"></div>
 <div class="login-box">
   <div class="login-logo">

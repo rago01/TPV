@@ -29,6 +29,18 @@ class AjaxUsuarios{
 
     $respuesta = ModeloUsuarios::mdlActualizarUsuario($tabla, $item1, $valor1, $item2, $valor2);
   }
+
+  //VALIDAR SI EL USUARIO YA EXISTE EN EL SISTEMA
+
+  public $validarDoc;
+  public function ajaxValidarDoc(){
+    $item = "doc";
+    $valor = $this->validarDoc;
+    $respuesta = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
+
+    echo json_encode($respuesta);
+
+  }
 }
 
 
@@ -47,5 +59,14 @@ if (isset($_POST['activarUsuario'])) {
 	$activarUsuario -> activarId = $_POST["activarId"];
 	$activarUsuario -> ajaxActivarUsuario();
 }
+
+//validar usuario
+
+if (isset($_POST['validarDoc'])) {
+    $valDoc = new AjaxUsuarios();
+    $valDoc -> validarDoc = $_POST['validarDoc'];
+    $valDoc -> ajaxValidarDoc();
+}
+
 
 ?>

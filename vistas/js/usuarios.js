@@ -54,7 +54,7 @@ $(document).on("click", ".btnEditarUsuario", function(){
      contentType: false,
      processData: false,
      success: function(respuesta){
-        
+
        if (window.matchMedia("(max-width:767px)").matches) {
          swal({
            title: "El estado del usuario ha sido actualizado",
@@ -81,5 +81,65 @@ $(document).on("click", ".btnEditarUsuario", function(){
      $(this).attr('estado_user', 0);
    }
 
+
+ })
+
+
+// ELIMINAR Usuario
+/*
+$(".btnEliminarUsuario").click(function(){
+
+  var id_user = $(this).attr("id_user");
+
+
+      swal({
+        title: "¿Está seguro de borrar el usuario?",
+        text: "¡Si no lo está puede cancelar la acción!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'Si, borrar usuario'
+      }).then(function(result){
+
+    if(result.value){
+
+      window.location = "index.php?ruta=usuarios&idUsuario="+idUsuario+"&usuario="+usuario+"&fotoUsuario="+fotoUsuario;
+
+    }
+
+  })
+})*/
+
+
+ ///REVISAR USUARIO REGISTRADO
+
+ $("#nuevoDoc").change(function(){
+
+    $(".alert").remove();
+
+    var doc = $(this).val();
+
+    var datos = new FormData();
+    datos.append("validarDoc", doc);
+    console.log(doc);
+
+    $.ajax({
+      url:"ajax/usuarios.ajax.php",
+      method: "POST",
+      data: datos,
+      cache: false,
+      contentType: false,
+      processData: false,
+      dataType: "json",
+      success: function(respuesta){
+            if (respuesta) {
+              $("#nuevoDoc").parent().after('<div class="alert alert-warning">Este usuario ya existe en la base de datos</div>')
+              $("#nuevoDoc").val("");
+            }
+      }
+
+    })
 
  })

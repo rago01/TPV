@@ -6,14 +6,17 @@ class ControladorUsuarios{
         if (isset($_POST["user"])){
           if (preg_match('/^[a-zA-Z0-9]+$/', $_POST['user']) &&
           preg_match('/^[a-zA-Z0-9]+$/', $_POST['clave1'])) {
+             $encriptar = crypt($_POST["clave1"], '$6$rounds=5000$usesomesillystringforsalt$');
              $tabla = "users";
              $item = "doc";
              $valor = $_POST['user'];
-              $respuesta = ModeloUsuarios::mdlMostrarUsuarios($tabla,$item,$valor);
-             //echo $respuesta["clave"].'<br>';
-             //echo $_POST["clave1"];
-             // echo var_dump($respuesta);
-              if($respuesta["doc"] == $_POST["user"] && $respuesta["clave"] == $respuesta["clave"]){
+             $respuesta = ModeloUsuarios::mdlMostrarUsuarios($tabla,$item,$valor);
+            // echo $respuesta["clave"].'<br>';
+             echo $encriptar.'<br>';
+             //echo $respuesta['doc'];
+             //echo $_POST["user"];
+            var_dump($respuesta);
+              if($respuesta["doc"] == $_POST["user"] && $respuesta["clave"] == $encriptar ){
 
                     if ($respuesta['estado_user'] == 1) {
 
@@ -23,9 +26,23 @@ class ControladorUsuarios{
                       $fecha = date('Y-m-d');
 						          $hora = date('H:i:s');
 
-            					echo '<script>
-            						      window.location = "inicio";
-            					      </script>';
+                      $fechaActual = $fecha.' '.$hora;
+
+                      $item1 = "ultimo_login";
+                      $valor1 = $fechaActual;
+
+                      $item2 = "id_user";
+                      $valor2 = $respuesta['id_user'];
+
+                      $ultimoLogin = ModeloUsuarios::mdlActualizarUsuario($tabla, $item1, $valor1, $item2, $valor2);
+
+                      if ($ultimoLogin == "ok") {
+                        echo '<script>
+              						      window.location = "inicio";
+              					      </script>';
+                      }else {
+                        echo $sql="UPDATE $tabla SET $item1 = $valor1 WHERE $item2 = $valor2";;
+                      }
             				}else{
       						echo '<br>
       							<div class="alert alert-danger">El usuario aún no está activado</div>';
@@ -124,7 +141,7 @@ class ControladorUsuarios{
              $tabla = "users";
              if($_POST['clave1'] != ''){
                 if (preg_match('/^[a-zA-Z0-9]+$/', $_POST['clave1'])) {
-                  $encriptar = crypt($_POST["clave1"], '$5$rounds=5000$usesomesillystringforsalt$');
+                  $encriptar = crypt($_POST["clave1"], '$6$rounds=5000$usesomesillystringforsalt$');
                 }else {
                   echo'<script>
 
@@ -160,7 +177,7 @@ class ControladorUsuarios{
                           echo '<br> ' .var_dump($datos);
 
                             $respuesta = ModeloUsuarios::mdlEditarUsuario($tabla, $datos);
-                            echo '<br> <br>' .var_dump($respuesta);
+                            //echo '<br> <br>' .var_dump($respuesta);
                   if ($respuesta == "ok") {
                     echo'
                     <script>
