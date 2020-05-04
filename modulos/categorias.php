@@ -7,7 +7,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header text-center">
       <h1>
-        GESTIÓN DE PRODUCTOS
+        GESTIÓN DE CATEGORÍAS
       </h1>
       <ol class="breadcrumb">
         <li><a href="inicio"><i class="fa fa-dashboard"></i>Inicio</a></li>
@@ -18,7 +18,7 @@
       <div class="box">
         <div class="box-header with-border">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddUser">
-              Agregar producto
+              Agregar categoría
             </button>
         </div>
         <div class="box-body table">
@@ -26,17 +26,16 @@
             <thead>
               <tr>
                 <th style="width:10px;">ID</th>
-                <th>PRODUCTO</th>
-                <th>DESCRIPCION</th>
+                <th>CATEGORÍA</th>
                 <th>ACCIONES</th>
               </tr>
             </thead>
             <?php
-           $sql="SELECT id_producto,nombre_producto,descripcion_producto,imagen,estado FROM productos_productos";
-            $consulta=Conexion::conectar()->prepare($sql);
-            $consulta->execute();
-            $i = 1;
-            while ($producto = $consulta->fetch()) {
+          $item = null;
+          $valor = null;
+          $categorias = ControladorCategorias::ctrMostrarCategorias($item, $valor);
+          $i = 1;
+          foreach($categorias as $key => $categoria) {
                 echo
                 '<tbody>
                     <tr>
