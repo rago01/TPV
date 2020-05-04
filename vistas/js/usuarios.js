@@ -36,7 +36,7 @@ $(document).on("click", ".btnEditarUsuario", function(){
 
  ///ACTIVAR USUARIO
 
- $(".btnActivar").click(function(){
+$(document).on("click", ".btnActivar", function(){
 
    var id_user = $(this).attr("id_user");
    var estado_user = $(this).attr("estado_user");
@@ -135,7 +135,7 @@ $(".btnEliminarUsuario").click(function(){
       dataType: "json",
       success: function(respuesta){
             if (respuesta) {
-              $("#nuevoDoc").parent().after('<div class="alert alert-warning">Este usuario ya existe en la base de datos</div>')
+              $("#nuevoDoc").parent().after('<div class="alert alert-warning">Este usuario ya existe en el sistema</div>')
               $("#nuevoDoc").val("");
             }
       }

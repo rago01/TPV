@@ -19,7 +19,7 @@
             </button>
         </div>
         <div class="box-body table">
-          <table class="table table-responsive table-striped dt-responsive ">
+          <table class="table table-responsive table-striped dt-responsive tablas" width="100%">
             <thead>
               <tr>
                 <th style="width:10px;">ID</th>
