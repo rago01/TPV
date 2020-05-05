@@ -129,6 +129,42 @@ EDITAR CATEGORIA
 
 }
 
+/*=============================================
+	BORRAR CATEGORIA
+	=============================================*/
+
+	static public function ctrBorrarCategoria(){
+
+		if(isset($_GET["id_categoria_inventario"])){
+
+			$tabla ="categorias_inventario";
+			$datos = $_GET["id_categoria_inventario"];
+
+			$respuesta = ModeloCategorias::mdlBorrarCategoria($tabla, $datos);
+
+			if($respuesta == "ok"){
+
+				echo'<script>
+
+					swal({
+						  type: "success",
+						  title: "La categoría ha sido borrada correctamente",
+						  showConfirmButton: true,
+						  confirmButtonText: "Cerrar"
+						  }).then(function(result){
+									if (result.value) {
+
+									window.location = "categorias_inventario";
+
+									}
+								})
+
+					</script>';
+			}
+		}
+
+	}
+
 
 
 }

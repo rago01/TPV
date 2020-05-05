@@ -67,7 +67,11 @@
 
   <?php
   // Agregar Categoria
-     include("forms/crear_categoria_inventario.php");
+  include("forms/crear_categoria_inventario.php");
      // Agregar Categoria
-        include("forms/editar_categoria_inventario.php");
+  include("forms/editar_categoria_inventario.php");
+
+  $borrarCategoria = new ControladorCategoriasInventario();
+  $borrarCategoria -> ctrBorrarCategoria();
+
   ?>
