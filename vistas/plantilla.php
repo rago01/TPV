@@ -65,9 +65,9 @@ echo '<div class="wrapper">';
         if ($_GET["ruta"]=="inicio" ||
             $_GET["ruta"]=="productos" ||
             $_GET["ruta"]=="ventas" ||
-            $_GET["ruta"]=="crear-venta" ||
+            $_GET["ruta"]=="crear_venta" ||
             $_GET["ruta"]=="usuarios" ||
-            $_GET["ruta"]=="categorias" ||
+            $_GET["ruta"]=="categorias_inventario" ||
             $_GET["ruta"]=="movimientos" ||
             $_GET["ruta"]=="proveedores" ||
             $_GET["ruta"]=="unidades" ||
@@ -90,6 +90,7 @@ echo '<div class="wrapper">';
 
 <script src="vistas/js/plantilla.js"></script>
 <script src="vistas/js/usuarios.js"></script>
+<script src="vistas/js/categorias.js"></script>
 
 </body>
 </html>

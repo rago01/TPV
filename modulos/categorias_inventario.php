@@ -7,7 +7,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header text-center">
       <h1>
-        GESTIÓN DE CATEGORÍAS
+        GESTIÓN DE CATEGORÍAS INVENTARIO
       </h1>
       <ol class="breadcrumb">
         <li><a href="inicio"><i class="fa fa-dashboard"></i>Inicio</a></li>
@@ -17,12 +17,12 @@
     <section class="content">
       <div class="box">
         <div class="box-header with-border">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddUser">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddCategoria">
               Agregar categoría
             </button>
         </div>
         <div class="box-body table">
-          <table class="table table-bordered table-striped dt-responsive">
+          <table class="table table-bordered table-striped dt-responsive tablas" width="100%">
             <thead>
               <tr>
                 <th style="width:10px;">ID</th>
@@ -30,45 +30,44 @@
                 <th>ACCIONES</th>
               </tr>
             </thead>
+            <tbody>
             <?php
+
           $item = null;
           $valor = null;
-          $categorias = ControladorCategorias::ctrMostrarCategorias($item, $valor);
+          $categorias = ControladorCategoriasInventario::ctrMostrarCategoriasInventario($item, $valor);
+          //var_dump($categorias);
+          //echo "ok";
           $i = 1;
           foreach($categorias as $key => $categoria) {
-                echo
-                '<tbody>
+                echo'
                     <tr>
-                      <td>'.$producto['id_producto'].'</td>
+                      <td>'.$categoria['id_categoria_inventario'].'</td>
                       <td>
-                        <p>'.$producto['nombre_producto'].'</p>
-                        <p> <img src="'.$producto['imagen'].'" class="img-responsive"> </p>
+                        <p>'.$categoria['nombre_categoria_inventario'].'</p>
                         ';
                   echo'</td>
                       <td>
-                        <p>'.$producto['descripcion_producto'].'</p>
-                      </td>
-                      <td>
                         <div class="btn-group">
-                          <button class="btn btn-warning"> <i class="fa fa-pencil"></i> </button>
-                          <button class="btn btn-danger"> <i class="fa fa-times"></i> </button>
+                          <button class="btn btn-warning btnEditarCategoria" id_categoria_inventario="'.$categoria['id_categoria_inventario'].'"
+                          data-toggle="modal" data-target="#editarCategoria"> <i class="fa fa-pencil"></i> </button>
+                          <button class="btn btn-danger btnEliminarCategoria" id_categoria_inventario="'.$categoria['id_categoria_inventario'].'"
+                          > <i class="fa fa-times"></i> </button>
                         </div>
                       </td>
                     </tr>
-                  </tbody>';
+                  ';
           } ?>
+          </tbody>
           </table>
-        </div>
-        <div class="box-footer">
-          Footer
         </div>
       </div>
     </section>
   </div>
-  <div class="modal fade" id="AddUser" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
 
-    </div>
-  </div>
-</div>
+  <?php
+  // Agregar Categoria
+     include("forms/crear_categoria_inventario.php");
+     // Agregar Categoria
+        include("forms/editar_categoria_inventario.php");
+  ?>
