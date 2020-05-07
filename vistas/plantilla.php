@@ -12,6 +12,8 @@ session_start();
   <title>TPV</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- iCheck for checkboxes and radio inputs -->
+ <link rel="stylesheet" href="vistas/plugins/iCheck/all.css">
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="vistas/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
@@ -51,6 +53,8 @@ session_start();
 
     <!--CryptoJS-->
     <script src ="vistas/js/sha3.js"></script>
+    <!-- iCheck 1.0.1 -->
+  <script src="vistas/plugins/iCheck/icheck.min.js"></script>
 
 </head>
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini login-page">
@@ -68,6 +72,7 @@ echo '<div class="wrapper">';
             $_GET["ruta"]=="crear_venta" ||
             $_GET["ruta"]=="usuarios" ||
             $_GET["ruta"]=="categorias_inventario" ||
+            $_GET["ruta"]=="categorias_producto" ||
             $_GET["ruta"]=="movimientos" ||
             $_GET["ruta"]=="proveedores" ||
             $_GET["ruta"]=="unidades" ||
