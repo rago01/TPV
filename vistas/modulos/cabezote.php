@@ -8,13 +8,11 @@
     <a href="" class="logo">
         <!-- Logo mini -->
         <span class="logo-mini">
-            <img src="vistas/img/plantilla/icono-blanco.png" class="img-responsive"
-            alt="" style="padding: 10px">
+            <label for="">BP</label>
         </span>
         <!-- Logo normal -->
         <span class="logo-lg">
-            <img src="vistas/img/plantilla/logo-blanco-lineal.png" class="img-responsive"
-            alt="" style="padding: 10px">
+            <label for="">BRAYAN PIZZAS</label>
         </span>
     </a>
     <nav class="navbar navbar-static-top" role="navigation">
@@ -28,7 +26,7 @@
             <li class="dropdown user user-menu">
                 <a href="" class="dropdown-toggle" data-toggle="dropdown">
                     <img src="vistas/img/usuarios/default/anonymous.png" class="user-image" alt="">
-                    <span class="hidden-xs"><?php echo $_SESSION['AUT']['nombres']; echo $_SESSION['AUT']['apellidos']?></span>
+                    <span class="hidden-xs"><?php echo $_SESSION['nombres'].' '.$_SESSION['apellidos']?></span>
                 </a>
                 <!--DROPDOWN TOGGLE-->
                 <ul class="dropdown-menu">

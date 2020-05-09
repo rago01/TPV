@@ -11,7 +11,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"> <strong>Nombre producto</strong> </span>
-                  <input type="text" class="form-control input-lg" name="producto" required>
+                  <input type="text" class="form-control input-lg" name="nombre_producto" required>
                 </div>
               </div>
               <div class="form-group">
@@ -24,7 +24,20 @@
                 <div class="input-group">
                   <span class="input-group-addon"> <strong>Seleccione categoría</strong> </span>
                   <select class="form-control input-lg" name="categoria">
-                      <option value=""></option>
+                        <option value=""></option>
+                    <?php
+
+                      $item = null;
+                      $valor = null;
+
+                      $categorias = ControladorCategoriasProducto::ctrMostrarCategoriasProducto($item, $valor);
+                      //var_dump($categorias);
+                      foreach ($categorias as $key => $value) {
+
+                        echo '<option value="'.$value["id_categoria_producto"].'">'.$value["nombre_categoria_producto"].'</option>';
+                      }
+
+                  ?>
                   </select>
                 </div>
               </div>
@@ -66,20 +79,26 @@
                   <div class="form-group">
                       <div class="input-group">
                         <span class="input-group-addon"> <strong>Precio venta</strong> </span>
-                        <input type="number" class="form-control input-lg" name="stock" value="">
+                        <input type="number" class="form-control input-lg" name="precio_venta" value="">
                       </div>
+                  </div>
+                  <div class="form-group">
+                      <div class="panel">SUBIR IMAGEN</div>
+                      <input type="file" class="nuevaImagen" name="nuevaImagen">
+                      <p class="help-block">Peso máximo de la imagen 2MB</p>
+                      <img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
                   </div>
           </div>
         </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
-                <button type="submit"  class="btn btn-primary">Agregar categoria</button>
+                <button type="submit"  class="btn btn-primary">Agregar producto</button>
               </div>
 
         <?php
 
-        $crearCategoria = new ControladorCategoriasInventario();
-        $crearCategoria -> ctrCrearCategoriaInventario();
+        $crearProducto = new ControladorProductosVenta();
+        $crearProducto -> ctrCrearProductoVenta();
 
         ?>
       </form>

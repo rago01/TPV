@@ -1,5 +1,4 @@
 <?php
-//include('../modelos/conexion.php');
 session_start();
 
 ?>
@@ -55,20 +54,29 @@ session_start();
     <script src ="vistas/js/sha3.js"></script>
     <!-- iCheck 1.0.1 -->
   <script src="vistas/plugins/iCheck/icheck.min.js"></script>
+  <!-- jQuery Number -->
+  <script src="vistas/plugins/jqueryNumber/jquerynumber.min.js"></script>
 
 </head>
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini login-page">
 <!-- Site wrapper -->
 
 <?php
-if (isset($_SESSION['AUT']) && $_SESSION['AUT']['estado_user'] == '1') {
+//var_dump($_SESSION).'<br>';
+//var_dump($respuesta);
+//echo $_SESSION['estado_user'];
+//echo $_SESSION['iniciarSesion'];
+if (isset($_SESSION) && $_SESSION['iniciarSesion'] == "ok") {
 echo '<div class="wrapper">';
     include "modulos/cabezote.php";
     include "modulos/menu.php";
     if (isset($_GET["ruta"])){
+
         if ($_GET["ruta"]=="inicio" ||
             $_GET["ruta"]=="productos" ||
             $_GET["ruta"]=="ventas" ||
+            $_GET["ruta"]=="clientes" ||
+            $_GET["ruta"]=="ordenes" ||
             $_GET["ruta"]=="crear_venta" ||
             $_GET["ruta"]=="usuarios" ||
             $_GET["ruta"]=="categorias_inventario" ||
@@ -77,8 +85,8 @@ echo '<div class="wrapper">';
             $_GET["ruta"]=="proveedores" ||
             $_GET["ruta"]=="unidades" ||
             $_GET["ruta"]=="reportes" ||
-            $_GET["ruta"]="logout"
-          ) {
+            $_GET["ruta"]="logout"){
+
             include "modulos/".$_GET["ruta"].".php";
         }else{
           include "modulos/404.php";
@@ -96,6 +104,8 @@ echo '<div class="wrapper">';
 <script src="vistas/js/plantilla.js"></script>
 <script src="vistas/js/usuarios.js"></script>
 <script src="vistas/js/categorias.js"></script>
+<script src="vistas/js/productos.js"></script>
+<script src="vistas/js/ventas.js"></script>
 
 </body>
 </html>

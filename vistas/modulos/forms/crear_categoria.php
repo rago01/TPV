@@ -23,8 +23,8 @@
 
         <?php
 
-        $crearCategoria = new ControladorCategoriasInventario();
-        $crearCategoria -> ctrCrearCategoriaInventario();
+      //  $crearCategoria = new ControladorCategoriasInventario();
+      //  $crearCategoria -> ctrCrearCategoriaInventario();
 
         ?>
       </form>

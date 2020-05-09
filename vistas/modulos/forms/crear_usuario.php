@@ -84,6 +84,12 @@
             <input type="password" class="form-control input-lg" name="clave1" required>
           </div>
         </div>
+        <div class="form-group">
+          <div class="panel">SUBIR IMAGEN</div>
+            <input type="file" class="nuevaFoto form-control" name="nuevaFoto">
+            <p class="help-block">Peso máximo de la imagen 2MB</p>
+            <img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
+        </div>
       </div>
     </div>
       <div class="modal-footer">

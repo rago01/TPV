@@ -22,7 +22,7 @@
 <div id="back"></div>
 <div class="login-box">
   <div class="login-logo">
-    <img src="vistas/img/logo.png"  class="img-responsive" style="padding: 30px 100px 0px 100px ">
+    <img src="vistas/img/plantilla/logo.png"  class="img-responsive" style="padding: 30px 100px 0px 100px ">
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">

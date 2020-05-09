@@ -66,9 +66,9 @@
 
   <?php
   // Agregar Categoria
-//  include("forms/crear_categoria_producto.php");
+ include("forms/crear_categoria.php");
      // Agregar Categoria
-//  include("forms/editar_categoria_producto.php");
+ include("forms/editar_categoria.php");
 
   $borrarCategoria = new ControladorCategoriasProducto();
   $borrarCategoria -> ctrBorrarCategoriaProducto();

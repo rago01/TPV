@@ -9,18 +9,27 @@ class ControladorUsuarios{
              $encriptar = crypt($_POST["clave1"], '$6$rounds=5000$usesomesillystringforsalt$');
              $tabla = "users";
              $item = "doc";
-             $valor = $_POST['user'];
+            echo $valor = $_POST['user'];
              $respuesta = ModeloUsuarios::mdlMostrarUsuarios($tabla,$item,$valor);
             // echo $respuesta["clave"].'<br>';
-             echo $encriptar.'<br>';
+             //echo $encriptar.'<br>';
              //echo $respuesta['doc'];
              //echo $_POST["user"];
-            var_dump($respuesta);
               if($respuesta["doc"] == $_POST["user"] && $respuesta["clave"] == $encriptar ){
 
                     if ($respuesta['estado_user'] == 1) {
 
-                      $_SESSION['AUT'] = $respuesta;
+                      $_SESSION['iniciarSesion'] = "ok";
+                      $_SESSION['id_user'] = $respuesta['id_user'];
+                      $_SESSION['nombres'] = $respuesta['nombres'];
+                      $_SESSION['apellidos'] = $respuesta['apellidos'];
+                      $_SESSION['t_doc'] = $respuesta['t_doc'];
+                      $_SESSION['doc'] = $respuesta['doc'];
+                      $_SESSION['email'] = $respuesta['email'];
+                      $_SESSION['celular'] = $respuesta['celular'];
+                      $_SESSION['direccion'] = $respuesta['direccion'];
+                      $_SESSION['ultimo_login'] = $respuesta['ultimo_login'];
+                      $_SESSION['id_perfil'] = $respuesta['id_perfil'];
 
                       date_default_timezone_set('America/Bogota');
                       $fecha = date('Y-m-d');
@@ -40,8 +49,6 @@ class ControladorUsuarios{
                         echo '<script>
               						      window.location = "inicio";
               					      </script>';
-                      }else {
-                        echo $sql="UPDATE $tabla SET $item1 = $valor1 WHERE $item2 = $valor2";;
                       }
             				}else{
       						echo '<br>
@@ -57,8 +64,8 @@ class ControladorUsuarios{
 
     static public function ctrCrearUsuario(){
       if (isset($_POST['doc'])) {
-        if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nombres"]) &&
-        preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["apellidos"])){
+        if(preg_match('/^[a-zA-Z0-9 ]+$/', $_POST["nombres"]) &&
+        preg_match('/^[a-zA-Z0-9 ]+$/', $_POST["apellidos"])){
 
             echo $tabla = "users";
 
@@ -79,7 +86,8 @@ class ControladorUsuarios{
                             //echo '<br>' .var_dump($datos);
 
             $respuesta = ModeloUsuarios::mdlIngresarUsuario($tabla, $datos);
-            var_dumo($respuesta);
+
+
             if ($respuesta == "ok") {
               echo'
               <script>
@@ -130,6 +138,7 @@ class ControladorUsuarios{
         $respuesta = ModeloUsuarios::mdlMostrarUsuarios($tabla,$item,$valor);
         return $respuesta;
        }
+
 
 
        //________EDITAR USUARIO
