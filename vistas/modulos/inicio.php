@@ -1,23 +1,109 @@
+<div class="content-wrapper">
 
+  <section class="content-header">
 
-  <!-- =============================================== -->
+    <h1>
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h3>
-        Hola <?php echo $_SESSION['nombres'].' '.$_SESSION['apellidos'] ?>, bienvenido a Brayan Pizzas!
-      </h3>
-    </section>
+      Tablero
 
+      <small>Panel de Control</small>
 
-  </div>
-  <?php
-if ($_SESSION['id_perfil'] == '4') {
+    </h1>
 
-    include("vista_cliente.php");
+    <ol class="breadcrumb">
+
+      <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
+
+      <li class="active">Tablero</li>
+
+    </ol>
+
+  </section>
+
+  <section class="content">
+
+    <div class="row">
+
+    <?php
+
+    if($_SESSION["id_perfil"] =="1"){
+
+    include "inicio/cajas-superiores.php";
 
     }
 
-      ?>
+    ?>
+
+    </div>
+
+     <div class="row">
+
+        <div class="col-lg-12">
+
+          <?php
+
+          if($_SESSION["id_perfil"] =="1"){
+
+           include "reportes/grafico-ventas.php";
+
+          }
+
+          ?>
+
+        </div>
+
+        <div class="col-lg-6">
+
+          <?php
+
+          if($_SESSION["id_perfil"] =="1"){
+
+           include "reportes/productos-mas-vendidos.php";
+
+         }
+
+          ?>
+
+        </div>
+
+         <div class="col-lg-6">
+
+          <?php
+
+          if($_SESSION["id_perfil"] =="1"){
+
+           include "inicio/productos-recientes.php";
+
+         }
+
+          ?>
+
+        </div>
+
+         <div class="col-lg-12">
+
+          <?php
+
+          if($_SESSION["perfil"] =="Especial" || $_SESSION["perfil"] =="Vendedor"){
+
+             echo '<div class="box box-success">
+
+             <div class="box-header">
+
+             <h1>Bienvenid@ ' .$_SESSION["nombre"].'</h1>
+
+             </div>
+
+             </div>';
+
+          }
+
+          ?>
+
+         </div>
+
+     </div>
+
+  </section>
+
+</div>

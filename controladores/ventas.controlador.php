@@ -437,7 +437,19 @@ static public function ctrRangoFechasVentas($fechaInicial, $fechaFinal){
 
 	}
 
+	/*=============================================
+	SUMA TOTAL VENTAS
+	=============================================*/
 
+	public function ctrSumaTotalVentas(){
+
+		$tabla = "ventas";
+
+		$respuesta = ModeloVentas::mdlSumaTotalVentas($tabla);
+
+		return $respuesta;
+
+	}
 
 
 

@@ -129,17 +129,13 @@ RANGO FECHAS
 static public function mdlRangoFechasVentas($tabla, $fechaInicial, $fechaFinal){
 
 	if($fechaInicial == null){
-
 		$sql = "SELECT v.id_venta,hora_venta,fecha_venta,metodo_pago,total,u.nombres nombres_usuario,u.apellidos apellidos_usuario,
 									 c.nombres nombres_cliente,c.apellidos apellidos_cliente
 									 FROM $tabla v INNER JOIN users u on u.id_user=v.resp_venta
 									 INNER JOIN clientes c on c.id_cliente=v.id_cliente ORDER BY id_venta ASC";
 		$stmt = Conexion::conectar()->prepare($sql);
-
 		$stmt -> execute();
-
 		return $stmt -> fetchAll();
-
 
 	}else if($fechaInicial == $fechaFinal){
 
@@ -148,9 +144,7 @@ static public function mdlRangoFechasVentas($tabla, $fechaInicial, $fechaFinal){
 									 FROM $tabla v INNER JOIN users u on u.id_user=v.resp_venta
 									 INNER JOIN clientes c on c.id_cliente=v.id_cliente WHERE fecha_venta like '%$fechaFinal%'";
 		$stmt = Conexion::conectar()->prepare($sql);
-
 		$stmt -> bindParam(":fecha_venta", $fechaFinal, PDO::PARAM_STR);
-
 		$stmt -> execute();
 
 		return $stmt -> fetchAll();
@@ -180,11 +174,22 @@ static public function mdlRangoFechasVentas($tabla, $fechaInicial, $fechaFinal){
 			$stmt = Conexion::conectar()->prepare($sql);
 
 		}
-
 		$stmt -> execute();
-
 		return $stmt -> fetchAll();
 	}
+
+}
+
+/*=============================================
+SUMAR EL TOTAL DE VENTAS
+=============================================*/
+
+static public function mdlSumaTotalVentas($tabla){
+	$stmt = Conexion::conectar()->prepare("SELECT SUM(total) as total FROM $tabla");
+	$stmt -> execute();
+	return $stmt -> fetch();
+	$stmt -> close();
+	$stmt = null;
 
 }
 }
