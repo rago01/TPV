@@ -9,3 +9,5 @@ require_once "../../modelos/usuarios.modelo.php";
 
 $reporte = new ControladorVentas();
 $reporte -> ctrDescargarReporte();
+
+?>
