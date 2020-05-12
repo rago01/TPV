@@ -83,7 +83,7 @@ PRODUCTOS MÁS VENDIDOS
       value    : ".$productos[$i]["ventas"].",
       color    : '".$colores[$i]."',
       highlight: '".$colores[$i]."',
-      label    : '".$productos[$i]["descripcion_producto"]."'
+      label    : '".$productos[$i]["nombre_producto"]."'
     },";
 
   }
