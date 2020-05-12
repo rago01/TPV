@@ -67,7 +67,7 @@ $(".tablaProductos").on("click", ".btnEditarProducto", function(){
 $(".nuevaImagen").change(function(){
 
 	var imagen = this.files[0];
-  console.log(imagen);
+  // console.log(imagen);
 	/*=============================================
   	VALIDAMOS EL FORMATO DE LA IMAGEN SEA JPG O PNG
   	=============================================*/
@@ -99,7 +99,7 @@ $(".nuevaImagen").change(function(){
   		$(datosImagen).on("load", function(event){
 
   			var rutaImagen = event.target.result;
-
+        console.log(rutaImagen);
   			$(".previsualizar").attr("src", rutaImagen);
 
   		})

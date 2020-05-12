@@ -1,15 +1,16 @@
+
 /*=============================================
 EDITAR CATEGORIA
 =============================================*/
 $(".tablas").on("click", ".btnEditarCategoria", function(){
 
-	var id_categoria_inventario = $(this).attr("id_categoria_inventario");
-  console.log ("id_categoria_inventario", id_categoria_inventario);
+	var id_categoria_producto = $(this).attr("id_categoria_producto");
+  console.log ("id_categoria_producto", id_categoria_producto);
 	var datos = new FormData();
-	datos.append("id_categoria_inventario", id_categoria_inventario);
+	datos.append("id_categoria_producto", id_categoria_producto);
 
 	$.ajax({
-		  url: "ajax/categorias_inventario.ajax.php",
+		  url: "ajax/categorias.ajax.php",
 		  method: "POST",
       data: datos,
       cache: false,
@@ -17,9 +18,9 @@ $(".tablas").on("click", ".btnEditarCategoria", function(){
      	processData: false,
      	dataType:"json",
      	success: function(respuesta){
-
-     		$("#new_nombre_categoria").val(respuesta["nombre_categoria_inventario"]);
-     		$("#id_categoria_inventario").val(respuesta["id_categoria_inventario"]);
+				console.log(respuesta);
+     		$("#new_nombre_categoria").val(respuesta["nombre_categoria_producto"]);
+     		$("#id_categoria_producto").val(respuesta["id_categoria_producto"]);
 
      	}
 
@@ -32,7 +33,7 @@ ELIMINAR CATEGORIA
 =============================================*/
 $(".tablas").on("click", ".btnEliminarCategoria", function(){
 
-	 var id_categoria_inventario = $(this).attr("id_categoria_inventario");
+	 var id_categoria_producto = $(this).attr("id_categoria_producto");
 
 	 swal({
 	 	title: '¿Está seguro de borrar la categoría?',
@@ -47,7 +48,7 @@ $(".tablas").on("click", ".btnEliminarCategoria", function(){
 
 	 	if(result.value){
 
-	 		window.location = "index.php?ruta=categorias_inventario&id_categoria_inventario="+id_categoria_inventario;
+	 		window.location = "index.php?ruta=categorias_producto&id_categoria_producto="+id_categoria_producto;
 
 	 	}
 

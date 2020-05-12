@@ -1,7 +1,4 @@
 
-
-  <!-- =============================================== -->
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -25,7 +22,7 @@
           <table class="table table-bordered table-striped dt-responsive tablas" width="100%">
             <thead>
               <tr>
-                <th style="width:10px;">ID</th>
+                <th style="width:10px">ID</th>
                 <th>CATEGORÍA</th>
                 <th>ACCIONES</th>
               </tr>
@@ -48,15 +45,16 @@
                   echo'</td>
                       <td>
                         <div class="btn-group">
-                          <button class="btn btn-warning btnEditarCategoria" id_categoria_inventario="'.$categoria['id_categoria_inventario'].'"
+                          <button class="btn btn-warning btnEditarCategoria" id_categoria_producto="'.$categoria['id_categoria_producto'].'"
                           data-toggle="modal" data-target="#editarCategoria"> <i class="fa fa-pencil"></i> </button>
-                          <button class="btn btn-danger btnEliminarCategoria" id_categoria_inventario="'.$categoria['id_categoria_inventario'].'"
+                          <button class="btn btn-danger btnEliminarCategoria" id_categoria_producto="'.$categoria['id_categoria_producto'].'"
                           > <i class="fa fa-times"></i> </button>
                         </div>
                       </td>
                     </tr>
                   ';
-          } ?>
+          }
+          ?>
           </tbody>
           </table>
         </div>
@@ -66,11 +64,11 @@
 
   <?php
   // Agregar Categoria
- include("forms/crear_categoria.php");
-     // Agregar Categoria
- include("forms/editar_categoria.php");
+  include("forms/crear_categoria.php");
+ //     // Agregar Categoria
+  include("forms/editar_categoria.php");
 
-  $borrarCategoria = new ControladorCategoriasProducto();
-  $borrarCategoria -> ctrBorrarCategoriaProducto();
+    $borrarCategoria = new ControladorCategoriasProducto();
+    $borrarCategoria -> ctrBorrarCategoriaProducto();
 
   ?>

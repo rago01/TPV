@@ -24,8 +24,8 @@
 
               <?php
 
-                $editarCategoria = new ControladorCategoriasInventario();
-                $editarCategoria -> ctrEditarCategoria();
+                $editarCategoria = new ControladorCategoriasProducto();
+                $editarCategoria -> ctrEditarCategoriaProducto();
 
               ?>
       </form>

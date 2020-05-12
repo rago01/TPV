@@ -37,14 +37,15 @@ REGISTRO DE PRODUCTO
 =============================================*/
 		static public function mdlIngresarProductoVenta($tabla, $datos){
 
-			$sql ="INSERT INTO $tabla(id_categoria, nombre_producto,descripcion_producto, precio_venta, imagen)
-			 VALUES (:id_categoria, :nombre_producto, :descripcion_producto, :precio_venta, :imagen)";
+			$sql ="INSERT INTO $tabla(id_categoria, nombre_producto,descripcion_producto, precio_venta,ventas, imagen)
+			 VALUES (:id_categoria, :nombre_producto, :descripcion_producto, :precio_venta,:ventas, :imagen)";
 			$stmt = Conexion::conectar()->prepare($sql);
 
 			$stmt->bindParam(":id_categoria", $datos["id_categoria"], PDO::PARAM_INT);
 			$stmt->bindParam(":nombre_producto", $datos["nombre_producto"], PDO::PARAM_STR);
 			$stmt->bindParam(":descripcion_producto", $datos["descripcion_producto"], PDO::PARAM_STR);
 			$stmt->bindParam(":precio_venta", $datos["precio_venta"], PDO::PARAM_STR);
+			$stmt->bindParam(":ventas", $datos["ventas"], PDO::PARAM_STR);
 			$stmt->bindParam(":imagen", $datos["imagen"], PDO::PARAM_STR);
 
 			if($stmt->execute()){

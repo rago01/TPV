@@ -27,7 +27,6 @@ class ControladorProductosVenta{
 	      VALIDAR IMAGEN
 	      =============================================*/
 				$ruta = "vistas/img/productos/default/anonymous.png";
-				//var_dump($_FILES);
         if(isset($_FILES["nuevaImagen"]["tmp_name"])){
         list($ancho, $alto) = getimagesize($_FILES["nuevaImagen"]["tmp_name"]);
         $nuevoAncho = 500;
@@ -68,6 +67,7 @@ class ControladorProductosVenta{
                "nombre_producto" => $_POST["nombre_producto"],
                "descripcion_producto" => $_POST["descripcion_producto"],
                "precio_venta" => $_POST["precio_venta"],
+							 "ventas" => "0",
                "imagen" => $ruta);
 			var_dump($datos);
       $respuesta = ModeloProductosVenta::mdlIngresarProductoVenta($tabla, $datos);

@@ -58,8 +58,8 @@
                           <button class="btn btn-warning btnEditarProducto" id_producto="'.$producto['id_producto'].'"
                           data-toggle="modal" data-target="#EditProducto">
                           <i class="fa fa-pencil"></i></button>
-                          <button class="btn btn-danger btnEliminarProducto" id_producto="'.$producto['id_producto'].'"
-                          > <i class="fa fa-times"></i> </button>
+                          <button class="btn btn-danger btnEliminarProducto" id_producto="'.$producto['id_producto'].'">
+                          <i class="fa fa-times"></i> </button>
                         </div>
                       </td>
                     </tr>
