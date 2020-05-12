@@ -20,7 +20,7 @@ $totalProductos = count($productos);
 
 <div class="col-lg-3 col-xs-6">
 
-  <div class="small-box bg-aqua">
+  <div class="small-box bg-blue">
 
     <div class="inner">
 
@@ -48,7 +48,7 @@ $totalProductos = count($productos);
 
 <div class="col-lg-3 col-xs-6">
 
-  <div class="small-box bg-green">
+  <div class="small-box bg-yellow">
 
     <div class="inner">
 
@@ -76,7 +76,7 @@ $totalProductos = count($productos);
 
 <div class="col-lg-3 col-xs-6">
 
-  <div class="small-box bg-yellow">
+  <div class="small-box bg-green">
 
     <div class="inner">
 
