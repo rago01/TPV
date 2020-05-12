@@ -9,11 +9,11 @@ class TablaProductos{
   public function mostrarTablaProductos(){
 
 
-/*
     $item = null;
     $valor = null;
+    $orden = "ventas"
 
-   	$productos = ControladorProductosVenta::ctrMostrarProductoVenta($item, $valor);
+   	$productos = ControladorProductosVenta::ctrMostrarProductoVenta($item, $valor, $orden);
  		//  var_dump($productos);
 
      $datosJson = '{
@@ -22,17 +22,17 @@ class TablaProductos{
          /*=============================================
   	 		TRAEMOS LA IMAGEN
    			=============================================*/
- 		 // 	$imagen = "<img src='".$productos[$i]["imagen"]."' width='40px'>";
+ 		 	$imagen = "<img src='".$productos[$i]["imagen"]."' width='40px'>";
          /*=============================================
   	 		TRAEMOS LA CATEGORÍA
    			=============================================*/
- /*		  	$item = "id_categoria_producto";
+	  	$item = "id_categoria_producto";
  		  	$valor = $productos[$i]["id_categoria"];
  		  	$categorias = ControladorCategoriasProducto::ctrMostrarCategoriasProducto($item, $valor);
-  */       /*=============================================
+     /*=============================================
   	 		TRAEMOS LAS ACCIONES
    			=============================================*/
-/*
+
  		  	$botones = "<div class='btn-group'><button class='btn btn-warning btnEditarProducto' id_producto='".$productos[$i]["id_producto"]."' data-toggle='modal' data-target='#EditProducto'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnEliminarProducto' id_producto='".$productos[$i]["id_producto"]."' imagen='".$productos[$i]["imagen"]."'><i class='fa fa-times'></i></button></div>";
 
          $datosJson .='[
@@ -51,7 +51,7 @@ class TablaProductos{
    }';
    echo $datosJson;
   }
-  */
+
 }
 /*=============================================
 ACTIVAR TABLA DE PRODUCTOS

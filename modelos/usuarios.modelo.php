@@ -29,7 +29,7 @@ REGISTRAR USUARIO
 	=============================================*/
 
   static public function mdlIngresarUsuario($tabla, $datos){
-   echo $sql="INSERT INTO $tabla (id_perfil, nombres, apellidos, t_doc, doc, email, direccion, celular, clave, estado_user)
+    $sql="INSERT INTO $tabla (id_perfil, nombres, apellidos, t_doc, doc, email, direccion, celular, clave, estado_user)
           VALUES (:perfil, :nombres, :apellidos, :t_doc, :doc, :email, :direccion, :celular, :clave, :estado_user)";
     $stmt = Conexion::conectar()->prepare($sql);
 

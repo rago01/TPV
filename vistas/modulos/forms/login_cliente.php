@@ -12,7 +12,7 @@
            <p class="login-box-msg">Ingresar al sistema</p>
            <form method="post">
              <div class="form-group has-feedback">
-               <input type="number" class="form-control" placeholder="Número celular" required name="user">
+               <input type="number" class="form-control" placeholder="Número celular" required name="userClient">
                <span class="glyphicon glyphicon-user form-control-feedback"></span>
              </div>
              <div class="row ">

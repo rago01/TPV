@@ -27,6 +27,7 @@
                 <th style="width:250px;">DESCRIPCION</th>
                 <th>IMAGEN</th>
                 <th>CATEGORIA</th>
+                <th>VENDIDOS</th>
                 <th>PRECIO VENTA</th>
                 <th>ACCIONES</th>
               </tr>
@@ -36,8 +37,9 @@
 
             $item = null;
             $valor = null;
+            $orden = "id_producto";
 
-            $productos = ControladorProductosVenta::ctrMostrarProductoVenta($item, $valor);
+            $productos = ControladorProductosVenta::ctrMostrarProductoVenta($item, $valor, $orden);
             //var_dump($productos);
           foreach($productos as $key => $producto) {
                 echo
@@ -48,6 +50,7 @@
                       <td><p> <img src="'.$producto['imagen'].'" class="img-responsive"> </p>';
                  echo'</td>
                       <td><p>'.$producto['categoria'].'</p></td>
+                      <td><p>'.$producto['ventas'].'</p></td>
                       <td><p> $'.$producto['precio_venta'].'</p></td>
                       <td>
                         <div class="btn-group">

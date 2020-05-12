@@ -7,13 +7,13 @@ class ModeloClientes{
   static public function mdlMostrarClientes($tabla,$item,$valor){
 
     if ($item != null) {
-      $sql="SELECT * FROM $tabla WHERE $item = :$item and id_perfil = 4";
+      $sql="SELECT * FROM $tabla WHERE $item = :$item ";
       $stmt = Conexion::conectar()->prepare($sql);
       $stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
       $stmt -> execute();
       return $stmt -> fetch();
     }else {
-      $sql="SELECT * FROM $tabla WHERE id_perfil = 4";
+      $sql="SELECT * FROM $tabla";
       $stmt = Conexion::conectar()->prepare($sql);
       $stmt -> execute();
       return $stmt -> fetchAll();
@@ -26,21 +26,17 @@ class ModeloClientes{
 REGISTRAR CLIENTE
   =============================================*/
 
-  static public function mdlIngresarUsuario($tabla, $datos){
-   echo $sql="INSERT INTO $tabla (id_perfil, nombres, apellidos, t_doc, doc, email, direccion, celular, clave, estado_user)
-          VALUES (:perfil, :nombres, :apellidos, :t_doc, :doc, :email, :direccion, :celular, :clave, :estado_user)";
+  static public function mdlIngresarCliente($tabla, $datos){
+   echo $sql="INSERT INTO $tabla (id_perfil, nombres, apellidos, celular,  email, direccion)
+          VALUES (:perfil, :nombres, :apellidos,:celular, :email, :direccion)";
     $stmt = Conexion::conectar()->prepare($sql);
 
     $stmt->bindParam(":perfil", $datos['perfil'], PDO::PARAM_STR);
     $stmt->bindParam(":nombres", $datos['nombres'], PDO::PARAM_STR);
     $stmt->bindParam(":apellidos", $datos['apellidos'], PDO::PARAM_STR);
-    $stmt->bindParam(":t_doc", $datos['t_doc'], PDO::PARAM_STR);
-    $stmt->bindParam(":doc", $datos['doc'], PDO::PARAM_STR);
-    $stmt->bindParam(":email", $datos['email'], PDO::PARAM_STR);
     $stmt->bindParam(":direccion", $datos['direccion'], PDO::PARAM_STR);
     $stmt->bindParam(":celular", $datos['celular'], PDO::PARAM_STR);
-    $stmt->bindParam(":clave", $datos['clave'], PDO::PARAM_STR);
-    $stmt->bindParam(":estado_user", $datos['estado_user'], PDO::PARAM_STR);
+    $stmt->bindParam(":email", $datos['email'], PDO::PARAM_STR);
 
     if ($stmt->execute()) {
       return "ok";
@@ -50,6 +46,28 @@ REGISTRAR CLIENTE
     $stmt->close();
     $stmt = null;
   }
+
+  /*=============================================
+	ACTUALIZAR CLIENTE
+	=============================================*/
+
+	static public function mdlActualizarCliente($tabla, $item1, $valor1, $valor){
+
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET $item1 = :$item1 WHERE id_cliente = :id_cliente");
+		$stmt -> bindParam(":".$item1, $valor1, PDO::PARAM_STR);
+		$stmt -> bindParam(":id_cliente", $valor, PDO::PARAM_STR);
+
+		if($stmt -> execute()){
+			return "ok";
+		}else{
+			return "error";
+		}
+
+		$stmt -> close();
+		$stmt = null;
+
+	}
+
 
 
 }

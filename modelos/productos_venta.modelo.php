@@ -8,7 +8,7 @@ class ModeloProductosVenta{
 	MOSTRAR PRODUCTOS
 	=============================================*/
 
-		static public function mdlMostrarProductosVenta($tabla, $item, $valor){
+		static public function mdlMostrarProductosVenta($tabla, $item, $valor, $orden){
 
 			if($item != null){
 
@@ -21,7 +21,7 @@ class ModeloProductosVenta{
 			}else{
 				$sql="SELECT p.*,c.nombre_categoria_producto categoria FROM
 	            $tabla p INNER JOIN  categorias_productos c on c.id_categoria_producto=p.id_categoria
-	                   ";
+	                  ORDER BY $orden DESC ";
 				$stmt = Conexion::conectar()->prepare($sql);
 				$stmt -> execute();
 				return $stmt -> fetchAll();
@@ -94,6 +94,7 @@ static public function mdlBorrarProducto($tabla, $datos){
 		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id_producto = :id_producto");
 
 		$stmt -> bindParam(":id_producto", $datos, PDO::PARAM_INT);
+
 	if($stmt -> execute()){
 			return "ok";
 		}else{
@@ -102,6 +103,44 @@ static public function mdlBorrarProducto($tabla, $datos){
 		$stmt -> close();
 		$stmt = null;
 	}
+
+	/*=============================================
+	ACTUALIZAR PRODUCTO
+	=============================================*/
+
+	static public function mdlActualizarProductoVenta($tabla, $item1, $valor1, $valor){
+
+		$sql="UPDATE $tabla SET $item1 = :$item1 WHERE id_producto = :id_producto";
+		$stmt = Conexion::conectar()->prepare($sql);
+		$stmt -> bindParam(":".$item1, $valor1, PDO::PARAM_STR);
+		$stmt -> bindParam(":id_producto", $valor, PDO::PARAM_STR);
+
+		if($stmt -> execute()){
+			return $sql;
+		}else{
+			return $sql;
+		}
+
+		$stmt -> close();
+		$stmt = null;
+	}
+
+	/*=============================================
+MOSTRAR SUMA VENTAS
+=============================================*/
+
+static public function mdlMostrarSumaVentas($tabla){
+
+	$stmt = Conexion::conectar()->prepare("SELECT SUM(ventas) as total FROM $tabla");
+
+	$stmt -> execute();
+
+	return $stmt -> fetch();
+
+	$stmt -> close();
+
+	$stmt = null;
+}
 
 }
 

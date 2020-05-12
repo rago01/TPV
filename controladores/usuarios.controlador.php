@@ -9,7 +9,7 @@ class ControladorUsuarios{
              $encriptar = crypt($_POST["clave1"], '$6$rounds=5000$usesomesillystringforsalt$');
              $tabla = "users";
              $item = "doc";
-            echo $valor = $_POST['user'];
+             $valor = $_POST['user'];
              $respuesta = ModeloUsuarios::mdlMostrarUsuarios($tabla,$item,$valor);
             // echo $respuesta["clave"].'<br>';
              //echo $encriptar.'<br>';

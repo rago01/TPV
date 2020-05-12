@@ -6,10 +6,10 @@ class ControladorProductosVenta{
 	MOSTRAR PRODUCTOS
 	=============================================*/
 
-	static public function ctrMostrarProductoVenta($item, $valor){
+	static public function ctrMostrarProductoVenta($item, $valor, $orden){
 
 		$tabla = "productos_venta";
-		$respuesta = ModeloProductosVenta::mdlMostrarProductosVenta($tabla, $item, $valor);
+		$respuesta = ModeloProductosVenta::mdlMostrarProductosVenta($tabla, $item, $valor, $orden);
 		return $respuesta;
 
 	}
@@ -240,6 +240,20 @@ static public function ctrBorrarCategoria(){
 	}
 
 }
+/*=============================================
+MOSTRAR SUMA VENTAS
+=============================================*/
+
+static public function ctrMostrarSumaVentas(){
+
+	$tabla = "productos_venta";
+
+	$respuesta = ModeloProductosVenta::mdlMostrarSumaVentas($tabla);
+
+	return $respuesta;
+
+}
+
 
 }
 

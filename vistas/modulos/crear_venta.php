@@ -11,12 +11,19 @@
     <section class="content">
       <div class="row">
         <!-- Formulario__________________________________________-->
-        <div class="col-lg-5 col-xs-12">
+        <div class="col-lg-6 col-xs-12">
           <div class="box box-success">
             <div class="box-header with-border"></div>
                 <form class="formularioVenta"  method="post">
                   <div class="box-body">
                     <div class="box">
+                      <?php
+                      $item = "id_venta";
+                      $valor = $_GET['id_venta'];
+
+                      $ventas = ControladorVentas::ctrMostrarVentas($item, $valor);
+                      //var_dump($ventas);
+                      ?>
                     <!-- ENTRADA PARA EL CAJERO-->
                       <div class="form-group">
                         <div class="input-group">
@@ -29,14 +36,15 @@
                       <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"> <i class="fa fa-key"></i> </span>
-
                             <?php
+
                             $item = null;
-                            $valor = null;
+                            $valor =  null;
+
                             $ventas = ControladorVentas::ctrMostrarVentas($item, $valor);
 
                             if (!$ventas) {
-                              echo '<input type="text" class="form-control" name="venta" id="venta" value="10001" readonly>';
+                              echo '<input type="text" class="form-control" name="nuevaVenta" id="nuevaVenta" value="1" readonly>';
                             }else {
                               foreach ($ventas as $key => $value) {
                                 // code...
@@ -44,7 +52,7 @@
 
                               $codigo = $value['id_venta'] + 1;
 
-                              echo '<input type="text" class="form-control" name="venta" id="venta" value="'.$codigo.'" readonly>';
+                              echo '<input type="text" class="form-control" name="nuevaVenta" id="nuevaVenta" value="'.$codigo.'" readonly>';
                             }
 
                             ?>
@@ -59,17 +67,17 @@
                               <option value="">Seleccionar cliente</option>
 
                                   <?php
-                                    //  $item = null;
+                                      $item = null;
                                       $valor = null;
                                       $categorias = ControladorClientes::ctrMostrarClientes($item, $valor);
                                        foreach ($categorias as $key => $value) {
-                                         echo '<option value="'.$value["id_user"].'">'.$value["nombres"].'</option>';
+                                         echo '<option value="'.$value["id_cliente"].'">'.$value["nombres"].' '.$value["apellidos"].'</option>';
                                        }
 
                                   ?>
                            </select>
                           <span class="input-group-addon">
-                            <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#AddUser" data-dismiss="modal">
+                            <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#AddCliente" data-dismiss="modal">
                               Agregar cliente
                             </button>
                           </span>
@@ -101,7 +109,7 @@
                                     <td>
                                         <div class="input-group">
                                           <span class="input-group-addon"> <i class="ion ion-social-usd"></i> </span>
-                                            <input type="text" class="form-control input-lg" id="nuevoTotalVenta" name="nuevoTotalVenta" placeholder="0000" readonly>
+                                            <input type="text" class="form-control input-lg" id="nuevoTotalVenta" total=""  name="nuevoTotalVenta" placeholder="0000" readonly>
                                             <input type="hidden" name="totalVenta" id="totalVenta">
 
                                         </div>
@@ -123,7 +131,7 @@
                             <select class="form-control"  id="nuevoMetodoPago" name="nuevoMetodoPago" required>
                               <option value="">Metodo de pago</option>
                               <option value="EFECTIVO">Efectivo</option>
-                              <option value="TB">Tarjeta Debito</option>
+                              <option value="TD">Tarjeta Debito</option>
                               <option value="NEQUI">Nequi</option>
                               <option value="DP">Daviplata</option>
                             </select>
@@ -136,15 +144,19 @@
                       </div>
                         <br>
                     </div>
-                </form>
             </div>
             <div class="box-footer">
-                <button type="submit" class="btn btn-primary pull-right" >Guardar cambios</button>
+                <button type="submit" class="btn btn-primary pull-right" >Guardar venta</button>
             </div>
+          </form>
+          <?php
+               $guardarVenta = new ControladorVentas();
+               $guardarVenta -> ctrCrearVenta();
+             ?>
           </div>
         </div>
         <!-- Tabla de productos _________________-->
-        <div class="col-lg-7 hidden-md hidden-sm hidden-xs">
+        <div class="col-lg-6 hidden-md hidden-sm hidden-xs">
           <div class="box box-warning">
               <div class="box-header with-border">
 
@@ -153,10 +165,7 @@
                 <table class="table table-bordered table-striped dt-responsive tablaVentas">
                   <thead>
                     <tr>
-                      <th>ID</th>
-                      <th>NOMBRE PRODUCTO</th>
-                      <th>DESCRIPCION</th>
-                      <th>IMAGEN</th>
+                      <th>PRODUCTO</th>
                       <th>PRECIO VENTA</th>
                       <th>ACCIONES</th>
                     </tr>
@@ -166,20 +175,18 @@
 
                   $item = null;
                   $valor = null;
-
-                  $productos = ControladorProductosVenta::ctrMostrarProductoVenta($item, $valor);
+                  $orden = "id_producto";
+                  $productos = ControladorProductosVenta::ctrMostrarProductoVenta($item, $valor, $orden);
                   //var_dump($productos);
                 foreach($productos as $key => $producto) {
                       echo
                       '<tr class="text-uppercase">
-                            <td>'.$producto['id_producto'].'</td>
-                            <td><p>'.$producto['nombre_producto'].'</p></td>
-                            <td><p>'.$producto['descripcion_producto'].'</p> </td>
-                            <td><p> <img src="'.$producto['imagen'].'" class="img-responsive"> </p>';
-                       echo'</td>
+                            <td style="width:250px"><p><strong>'.$producto['nombre_producto'].'</strong></p><p>'.$producto['descripcion_producto'].'</p>
+                            <p> <img style="width:100px" src="'.$producto['imagen'].'" class="img-responsive"> </p></td>
+
                             <td><p> $'.$producto['precio_venta'].'</p></td>
-                            <td>
-                              <div class="btn-group">
+                            <td style="width:200px">
+                              <div class="btn-group text-center">
                                 <button type="button" class="btn btn-primary agregarProducto recuperarBoton" id_producto="'.$producto['id_producto'].'">Agregar</button>
                               </div>
                             </td>
@@ -196,6 +203,6 @@
     </section>
   </div>
 <?php
-include("forms/crear_usuario.php")
+include("forms/crear_cliente.php");
 
 ?>

@@ -17,19 +17,23 @@ class AjaxProductos{
       if ($this->traerProductos == 'ok') {
         $item = null;
         $valor = null;
-        $respuesta = ControladorProductosVenta::ctrMostrarProductoVenta($item, $valor);
+        $orden = "ventas";
+        $respuesta = ControladorProductosVenta::ctrMostrarProductoVenta($item, $valor, $orden);
 
         echo json_encode($respuesta);
       }elseif ($this->nombreProducto != "") {
         $item = "nombre_producto";
         $valor = $this->nombreProducto;
-        $respuesta = ControladorProductosVenta::ctrMostrarProductoVenta($item, $valor);
+        $orden = "ventas";
+        $respuesta = ControladorProductosVenta::ctrMostrarProductoVenta($item, $valor, $orden);
 
         echo json_encode($respuesta);
       }else {
         $item = "id_producto";
         $valor = $this->id_producto;
-        $respuesta = ControladorProductosVenta::ctrMostrarProductoVenta($item, $valor);
+        $orden = "ventas";
+        $respuesta = ControladorProductosVenta::ctrMostrarProductoVenta($item, $valor, $orden);
+        
         echo json_encode($respuesta);
       }
   }
