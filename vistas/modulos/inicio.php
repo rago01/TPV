@@ -1,4 +1,4 @@
-<?php $perfil = $_SESSION['id_perfil']; ?>
+<?php  $perfil = $_SESSION['id_perfil']; ?>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -12,10 +12,10 @@
     </section>
     <section class="content">
       <?php
-      if ($perfil == 1 || $perfil == 2 || $perfil == 3) {
-        include("inicio/vista_admin.php");
+      if ($perfil == '1' || $perfil == '2' || $perfil == '3') {
+        include("vista_admin.php");
       }
-      if ($perfil == 4) {
+      if ($perfil == '4') {
         include("inicio/vista_cliente.php");
       }
       ?>

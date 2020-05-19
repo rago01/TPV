@@ -1,6 +1,7 @@
 <div class="row">
     <?php
-    if($_SESSION["id_perfil"] =="1"){
+    if($perfil == "1"){
+      
     include "inicio/cajas-superiores.php";
     }
     ?>
@@ -9,7 +10,7 @@
      <div class="row">
         <div class="col-lg-12">
           <?php
-          if($_SESSION["id_perfil"] =="1"){
+          if($perfil == "1"){
            include "reportes/grafico-ventas.php";
           }
           ?>

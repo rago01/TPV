@@ -67,7 +67,7 @@
 
                                 echo '<li>
                                           <a href="'.$cliente['modulo'].'">
-                                              <i class="fa fa-area-chart"></i>
+                                              <i class="fa fa-file-text-o"></i>
                                               <span>'.$cliente['titulo'].'</span>
                                           </a>
                                       </li>
