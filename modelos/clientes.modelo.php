@@ -27,8 +27,8 @@ REGISTRAR CLIENTE
   =============================================*/
 
   static public function mdlIngresarCliente($tabla, $datos){
-   echo $sql="INSERT INTO $tabla (id_perfil, nombres, apellidos, celular,  email, direccion)
-          VALUES (:perfil, :nombres, :apellidos,:celular, :email, :direccion)";
+   echo $sql="INSERT INTO $tabla (id_perfil, nombres, apellidos, celular,  email, direccion, compras)
+          VALUES (:perfil, :nombres, :apellidos,:celular, :email, :direccion, :compras)";
     $stmt = Conexion::conectar()->prepare($sql);
 
     $stmt->bindParam(":perfil", $datos['perfil'], PDO::PARAM_STR);
@@ -37,6 +37,7 @@ REGISTRAR CLIENTE
     $stmt->bindParam(":direccion", $datos['direccion'], PDO::PARAM_STR);
     $stmt->bindParam(":celular", $datos['celular'], PDO::PARAM_STR);
     $stmt->bindParam(":email", $datos['email'], PDO::PARAM_STR);
+    $stmt->bindParam(":compras", $datos['compras'], PDO::PARAM_STR);
 
     if ($stmt->execute()) {
       return "ok";

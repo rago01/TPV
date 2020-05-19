@@ -19,14 +19,13 @@ class ModeloProductosVenta{
 				$stmt -> execute();
 				return $stmt -> fetch();
 			}else{
-				$sql="SELECT p.*,c.nombre_categoria_producto categoria FROM
+				$sql="SELECT p.*,c.id_categoria_producto,nombre_categoria_producto categoria FROM
 	            $tabla p INNER JOIN  categorias_productos c on c.id_categoria_producto=p.id_categoria
 	                  ORDER BY $orden DESC ";
 				$stmt = Conexion::conectar()->prepare($sql);
 				$stmt -> execute();
 				return $stmt -> fetchAll();
 			}
-
 			$stmt -> close();
 			$stmt = null;
 
