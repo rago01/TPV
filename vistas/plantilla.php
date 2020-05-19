@@ -113,9 +113,8 @@ session_start();
 if (isset($_SESSION) && $_SESSION['iniciarSesion'] == "ok") {
 echo '<div class="wrapper">';
     include "modulos/cabezote.php";
-    if ($_SESSION['id_perfil'] != '4') {
-      include "modulos/menu.php";
-    }
+    include "modulos/menu.php";
+
     if (isset($_GET["ruta"])){
 
         if ($_GET["ruta"]=="inicio" ||
@@ -132,7 +131,8 @@ echo '<div class="wrapper">';
             $_GET["ruta"]=="proveedores" ||
             $_GET["ruta"]=="unidades" ||
             $_GET["ruta"]=="reportes" ||
-            $_GET["ruta"]=="logout"){
+            $_GET["ruta"]=="logout" ||
+            $_GET["ruta"]=="historial_pedidos"){
 
             include "modulos/".$_GET["ruta"].".php";
 
@@ -155,5 +155,6 @@ echo '<div class="wrapper">';
   <script src="vistas/js/productos.js"></script>
   <script src="vistas/js/ventas.js"></script>
   <script src="vistas/js/reportes.js"></script>
+  <script src="vistas/js/clientes.js"></script>
 </body>
 </html>

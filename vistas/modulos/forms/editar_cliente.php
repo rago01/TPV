@@ -1,4 +1,4 @@
-<div class="modal fade" id="AddCliente" role="dialog">
+<div class="modal fade" id="EditCliente" role="dialog">
   <div class="modal-dialog">
       <div class="modal-content">
         <form role="form" method="post" enctype="multipart/form-darta" onsubmit="return validar()">
@@ -54,7 +54,7 @@
         <?php
 
         $crearCliente = new ControladorClientes();
-        $crearCliente -> ctrCrearCliente();
+        $crearCliente -> ctrEditarCliente();
 
         ?>
       </form>

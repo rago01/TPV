@@ -5,7 +5,7 @@
 ?>
 
 <header class="main-header">
-    <a href="" class="logo">
+    <a href="inicio" class="logo">
         <!-- Logo mini -->
         <span class="logo-mini">
             <label for="">BP</label>
@@ -18,7 +18,6 @@
     <nav class="navbar navbar-static-top" role="navigation">
     <!--BOTON MENU HAMBURGUESA-->
         <a href="" class="sidebar-toggle" data-toggle="push-menu" role="button">
-            <span class="sr-only">Navigation</span>
         </a>
     <!--PERFIL DEL USUARIO-->
     <div class="navbar-custom-menu">
@@ -26,13 +25,13 @@
             <li class="dropdown user user-menu">
                 <a href="" class="dropdown-toggle" data-toggle="dropdown">
                     <img src="vistas/img/usuarios/default/anonymous.png" class="user-image" alt="">
-                    <span class="hidden-xs"><?php echo $_SESSION['nombres'].' '.$_SESSION['apellidos']?></span>
+                    <span><?php echo $_SESSION['nombres'].' '.$_SESSION['apellidos']?></span>
                 </a>
                 <!--DROPDOWN TOGGLE-->
                 <ul class="dropdown-menu">
-                    <li class="user-body">
+                    <li class="">
                         <div class="pull-right">
-                            <a href="logout" class="btn btn-default btn-flat">Salir</a>
+                            <a href="logout" class="btn btn-default">Salir</a>
                         </div>
                     </li>
                 </ul>

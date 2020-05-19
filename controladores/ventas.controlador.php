@@ -101,7 +101,92 @@ static public function ctrCrearVenta(){
 }
 
 /*=============================================
-CREAR VENTA
+CREAR ORDEN PARA CLIENTES
+=============================================*/
+
+static public function ctrCrearOrden(){
+
+	if(isset($_POST["nuevaVenta"])){
+		/*=============================================
+		ACTUALIZAR LAS COMPRAS DEL CLIENTE Y REDUCIR EL STOCK Y AUMENTAR LAS VENTAS DE LOS PRODUCTOS
+		=============================================*/
+		$listaProductos = json_decode($_POST["listaProductos"], true);
+	//	var_dump($listaProductos);
+		$totalProductosComprados = array();
+					//
+					// foreach ($listaProductos as $key => $value) {
+					// 	array_push($totalProductosComprados, $value["cantidad"]);
+					//
+					// 	//var_dump($value);
+					// 	   $tablaProductos = "productos_venta";
+					//
+					//      $item = "id_producto";
+					//      $valor = $value["id_producto"];
+					//
+					//      $traerProducto = ModeloProductosVenta::mdlMostrarProductosVenta($tablaProductos, $item, $valor);
+					//
+					// 		 //var_dump($traerProducto);
+					// 		 $item1a = "ventas";
+					// 		 $valor1a = $value["cantidad"] + $traerProducto["ventas"];
+					//
+					//      $nuevasVentas = ModeloProductosVenta::mdlActualizarProductoVenta($tablaProductos, $item1a, $valor1a, $valor);
+					// 		 var_dump($nuevasVentas);
+					// }
+			// $tablaClientes = "clientes";
+			// $item = "id_cliente";
+			// $valor = $_POST["seleccionarCliente"];
+			//
+			// $traerCliente = ModeloClientes::mdlMostrarClientes($tablaClientes, $item, $valor);
+			//
+			// //var_dump($traerCliente);
+			// $item1 = "compras";
+  		// $valor1 = array_sum($totalProductosComprados) + $traerCliente['compras'];
+			//
+			// $comprasCliente = ModeloClientes::mdlActualizarCliente($tablaClientes, $item1, $valor1, $valor);
+			// //var_dump($comprasCliente);
+
+			/*=============================================
+			GUARDAR LA COMPRA
+			=============================================*/
+
+			$tabla = "ventas";
+
+			$datos = array(
+							 "id_cliente"=>$_SESSION['id_cliente'],
+							 "resp_venta"=>"0",
+						   "hora_venta"=>date("H:i:s"),
+							 "fecha_venta"=>date("Y-m-d"),
+						   "productos"=>$_POST["listaProductos"],
+							 "metodo_pago"=>"PENDIENTE",
+						   "total"=>$_POST["totalVenta"],
+							 "estado_venta"=>"2"
+						   );
+							 var_dump($datos);
+			$respuesta = ModeloVentas::mdlIngresarVenta($tabla, $datos);
+			//var_dump($respuesta);
+			if($respuesta == "ok"){
+				echo'<script>
+
+				localStorage.removeItem("rango");
+
+				swal({
+						type: "success",
+						title: "Se ha realizado la venta con éxito!",
+						showConfirmButton: true,
+						confirmButtonText: "Cerrar"
+						}).then((result) => {
+								if (result.value) {
+								window.location = "crear_venta";
+								}
+							})
+				</script>';
+
+			}
+	}
+
+}
+/*=============================================
+EDITAR VENTA
 =============================================*/
 
 static public function ctrEditarVenta(){
@@ -369,23 +454,22 @@ static public function ctrRangoFechasVentas($fechaInicial, $fechaFinal){
 			/*=============================================
 			CREAMOS EL ARCHIVO DE EXCEL
 			=============================================*/
-
-			$Name = $_GET["reporte"].'.xls';
-
-			header('Expires: 0');
-			header('Cache-control: private');
-			header("Content-type: application/vnd.ms-excel"); // Archivo de Excel
-			header("Cache-Control: cache, must-revalidate");
-			header('Content-Description: File Transfer');
-			header('Last-Modified: '.date('D, d M Y H:i:s'));
-			header("Pragma: public");
-			header('Content-Disposition:; filename="'.$Name.'"');
-			header("Content-Transfer-Encoding: binary");
+			//
+			// $Name = $_GET["reporte"].'.xls';
+			//
+			// header('Expires: 0');
+			// header('Cache-control: private');
+			// header("Content-type: application/vnd.ms-excel"); // Archivo de Excel
+			// header("Cache-Control: cache, must-revalidate");
+			// header('Content-Description: File Transfer');
+			// header('Last-Modified: '.date('Y-m-d'));
+			// header("Pragma: public");
+			// header('Content-Disposition:; filename="'.$Name.'"');
+			// header("Content-Transfer-Encoding: binary");
 
 			echo utf8_decode("<table border='0'>
 
 					<tr>
-					<td style='font-weight:bold; border:1px solid #eee;'>CÓDIGO</td>
 					<td style='font-weight:bold; border:1px solid #eee;'>#FACTURA</td>
 					<td style='font-weight:bold; border:1px solid #eee;'>VENDEDOR</td>
 					<td style='font-weight:bold; border:1px solid #eee;'>CANTIDAD</td>
@@ -394,12 +478,12 @@ static public function ctrRangoFechasVentas($fechaInicial, $fechaFinal){
 					<td style='font-weight:bold; border:1px solid #eee;'>METODO DE PAGO</td
 					<td style='font-weight:bold; border:1px solid #eee;'>FECHA</td>
 					</tr>");
-
+					var_dump($ventas);
 			foreach ($ventas as $row => $item){
-
+				 $item['resp_venta'];
 				$cliente = ControladorClientes::ctrMostrarClientes("id_cliente", $item["id_cliente"]);
 				$vendedor = ControladorUsuarios::ctrMostrarUsuarios("id_user", $item["resp_venta"]);
-
+				//var_dump($vendedor);
 			 echo utf8_decode("<tr>
 			 			<td style='border:1px solid #eee;'>".$item["id_venta"]."</td>
 			 			<td style='border:1px solid #eee;'>".$cliente["nombres"]."</td>
@@ -417,14 +501,14 @@ static public function ctrRangoFechasVentas($fechaInicial, $fechaFinal){
 
 		 		foreach ($productos as $key => $valueProductos) {
 
-		 			echo utf8_decode($valueProductos["descripcion_producto"]."<br>");
+		 			echo utf8_decode($valueProductos["nombre_producto"]."<br>");
 
 		 		}
 
 		 		echo utf8_decode("</td>
-					<td style='border:1px solid #eee;'>$ ".number_format($item["total"])."</td>
+					<td style='border:1px solid #eee;'>$ ".$item["total"]."</td>
 					<td style='border:1px solid #eee;'>".$item["metodo_pago"]."</td>
-					<td style='border:1px solid #eee;'>".substr($item["fecha_venta"],0,10)."</td>
+					<td style='border:1px solid #eee;'>".$item["fecha_venta"]."</td>
 		 			</tr>");
 
 

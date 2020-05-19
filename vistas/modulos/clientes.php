@@ -14,7 +14,7 @@
     <section class="content">
       <div class="box">
         <div class="box-header with-border">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddUser">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddCliente">
               Agregar Cliente
             </button>
         </div>
@@ -34,8 +34,9 @@
             $valor = null;
 
             $usuarios = ControladorClientes::ctrMostrarClientes($item, $valor);
-
-            /*$sql="SELECT id_user,id_perfil,nombres,apellidos,t_doc,doc,email,celular,direccion,estado_user FROM users";
+            /*
+            Otra forma de llamar los ddatos para las consultas directas
+            $sql="SELECT id_user,id_perfil,nombres,apellidos,t_doc,doc,email,celular,direccion,estado_user FROM users";
             $consulta=Conexion::conectar()->prepare($sql);
             $consulta->execute(); */
             $i = 1;
@@ -52,8 +53,8 @@
                       <td>
                         <div class="btn-group">
                           <button class="btn btn-warning btnEditarUsuario" id_user="'.$usuario['id_user'].'"
-                          data-toggle="modal" data-target="#EditUser"> <i class="fa fa-pencil"></i> </button>';
-                        //  <button class="btn btn-danger btnEliminarUsuario" id_user="'.$usuario['id_user'].'"> <i class="fa fa-times"></i> </button>
+                          data-toggle="modal" data-target="#EditCliente"> <i class="fa fa-pencil"></i> </button>';
+                        //<button class="btn btn-danger btnEliminarUsuario" id_user="'.$usuario['id_user'].'"> <i class="fa fa-times"></i> </button>
                       echo '</div>
                       </td>
                     </tr>
@@ -66,6 +67,9 @@
     </section>
   </div>
 
-          <?php //INCLUIR FORMULARIO PARA CREACION
+          <?php
+          //INCLUIR FORMULARIO PARA CREACION
           include('forms/crear_cliente.php');
+          //INCLUIR FORMULARIO PARA EDICION
+          include('forms/editar_cliente.php.php');
           ?>

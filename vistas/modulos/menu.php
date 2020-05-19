@@ -1,7 +1,3 @@
-<?php
-
-?>
-
 <aside class="main-sidebar">
     <section class="sidebar">
         <ul class="sidebar-menu">
@@ -12,9 +8,8 @@
                 </a>
             </li>
           <?php  //INICIA MENU DE ADMINISTRACION
-
-
           $perfil = $_SESSION['id_perfil'];
+
                    $sql="SELECT m.titulo,modulo,grupo FROM menu m LEFT JOIN perfiles_menus p ON p.id_menu=m.id_menu
                          WHERE p.id_perfil = $perfil AND grupo = 'administracion'";
                   $consulta=Conexion::conectar()->prepare($sql);
@@ -22,7 +17,6 @@
                   //var_dump($consulta);
                 //  echo $consulta;
                       while($perfil = $consulta->fetch()){
-
                           echo '<li>
                                     <a href="'.$perfil['modulo'].'">
                                         <i class="fa fa-cog"></i>
@@ -48,7 +42,7 @@
                                ';
                          }
 
-                          $perfil = $_SESSION['id_perfil'];
+                         $perfil = $_SESSION['id_perfil'];
                           $sql2="SELECT m.titulo,modulo,grupo FROM menu m LEFT JOIN perfiles_menus p ON p.id_menu=m.id_menu
                                WHERE p.id_perfil = $perfil AND grupo = 'reportes'";
                           $consulta2=Conexion::conectar()->prepare($sql2);
@@ -63,6 +57,22 @@
                                     </li>
                                   ';
                             }
+                            $perfil = $_SESSION['id_perfil'];
+                            $sql3="SELECT m.titulo,modulo,grupo FROM menu m LEFT JOIN perfiles_menus p ON p.id_menu=m.id_menu
+                                 WHERE p.id_perfil = $perfil AND grupo = 'clientes'";
+                            $consulta3=Conexion::conectar()->prepare($sql3);
+                            $consulta3->execute();
+                            //echo $sql3;
+                            while($cliente = $consulta3->fetch()){
+
+                                echo '<li>
+                                          <a href="'.$cliente['modulo'].'">
+                                              <i class="fa fa-area-chart"></i>
+                                              <span>'.$cliente['titulo'].'</span>
+                                          </a>
+                                      </li>
+                                    ';
+                              }
 
                   ?>
               </ul>

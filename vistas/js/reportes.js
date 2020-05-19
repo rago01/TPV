@@ -49,7 +49,7 @@ $(".daterangepicker.opensright .range_inputs .cancelBtn").on("click", function()
 
 	localStorage.removeItem("capturarRango2");
 	localStorage.clear();
-	window.location = "reporte_ventas";
+	window.location = "reportes";
 })
 
 /*=============================================

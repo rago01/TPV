@@ -83,9 +83,15 @@ class ControladorClientes{
                           'apellidos' => $_POST['apellidos'],
                           'direccion' => $_POST['direccion'],
                           'celular' => $_POST['celular'],
-                          'email' => $_POST['email']
+                          'email' => $_POST['email'],
+                          'compras' => "0"
                           );
                           //echo '<br>' .var_dump($datos);
+                  if ($_POST['modulo_admin'] == 1) {
+                    $interfaz = 'clientes';
+                  }else {
+                    $interfaz = 'crear_venta';
+                  }
 
           $respuesta = ModeloClientes::mdlIngresarCliente($tabla, $datos);
 
@@ -104,7 +110,7 @@ class ControladorClientes{
 
                    if(result.value){
 
-                     window.location = "crear_venta";
+                     window.location = "'.$interfaz.'";
 
                    }
 
@@ -123,7 +129,7 @@ class ControladorClientes{
                }).then(function(result){
                   if(result.value){
 
-                    window.location = "crear_venta";
+                    window.location = "'.$interfaz.'";
 
                   }
                });
