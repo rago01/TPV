@@ -32,7 +32,7 @@ static public function ctrCrearVenta(){
 					foreach ($listaProductos as $key => $value) {
 						array_push($totalProductosComprados, $value["cantidad"]);
 
-						//var_dump($value);
+						var_dump($value);
 						   $tablaProductos = "productos_venta";
 
 					     $item = "id_producto";
