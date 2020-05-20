@@ -35,7 +35,7 @@ class ModeloVentas{
 	REGISTRO DE VENTA
 	=============================================*/
 
-	static public function mdlIngresarVenta($tabla, $datos){
+	 public function mdlIngresarVenta($tabla, $datos){
 
 
 		$sql ="INSERT INTO $tabla(id_cliente, resp_venta, hora_venta, fecha_venta, productos, metodo_pago, total, estado_venta)
