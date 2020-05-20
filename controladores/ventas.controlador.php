@@ -37,8 +37,8 @@ static public function ctrCrearVenta(){
 
 					     $item = "id_producto";
 					     $valor = $value["id_producto"];
-
-					     $traerProducto = ModeloProductosVenta::mdlMostrarProductosVenta($tablaProductos, $item, $valor);
+							 $valora = "id_pruducto";
+					     $traerProducto = ModeloProductosVenta::mdlMostrarProductosVenta($tablaProductos, $item, $valor,$valora);
 
 							 var_dump($traerProducto);
 							 $item1a = "ventas";
