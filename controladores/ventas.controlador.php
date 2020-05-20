@@ -45,7 +45,7 @@ static public function ctrCrearVenta(){
 							 $valor1a = $value["cantidad"] + $traerProducto["ventas"];
 
 					     $nuevasVentas = ModeloProductosVenta::mdlActualizarProductoVenta($tablaProductos, $item1a, $valor1a, $valor);
-							 var_dump($nuevasVentas);
+							 //var_dump($nuevasVentas);
 					}
 			$tablaClientes = "clientes";
 			$item = "id_cliente";
@@ -53,7 +53,7 @@ static public function ctrCrearVenta(){
 
 			$traerCliente = ModeloClientes::mdlMostrarClientes($tablaClientes, $item, $valor);
 
-			var_dump($traerCliente);
+			//var_dump($traerCliente);
 			$item1 = "compras";
   		$valor1 = array_sum($totalProductosComprados) + $traerCliente['compras'];
 
@@ -76,10 +76,17 @@ static public function ctrCrearVenta(){
 						   "total"=>$_POST["totalVenta"],
 							 "estado_venta"=>"1"
 						   );
-							 //var_dump($datos);
-			$respuesta = ModeloVentas::mdlIngresarVenta($tabla, $datos);
-			var_dump($respuesta);
-			if($respuesta == "ok"){
+							 //var_dump($datos)
+							 $sql ="INSERT INTO $tabla(id_cliente, resp_venta, hora_venta, fecha_venta, productos, metodo_pago, total, estado_venta)
+					 		 VALUES ( '".$datos["id_cliente"]."', '".$datos["resp_venta"]."', '".$datos["hora_venta"]."', '".$datos["fecha_venta"]."', '".$datos["productos"]."',
+							 					 '".$datos["metodo_pago"]."', '".$datos["total"]."', '".$datos["estado_venta"]."')";
+					 		 $respuesta = Conexion::conectar()->prepare($sql);
+							 $respuesta -> execute();
+
+							 echo $sql;
+			// $respuesta = ModeloVentas::mdlIngresarVenta($tabla, $datos);
+			// var_dump($respuesta);
+			if($respuesta -> execute()){
 				echo'<script>
 
 				localStorage.removeItem("rango");
