@@ -25,7 +25,7 @@ static public function ctrCrearVenta(){
 		ACTUALIZAR LAS COMPRAS DEL CLIENTE Y REDUCIR EL STOCK Y AUMENTAR LAS VENTAS DE LOS PRODUCTOS
 		=============================================*/
 		$listaProductos = json_decode($_POST["listaProductos"], true);
-	//	var_dump($listaProductos);
+		var_dump($listaProductos);
 		$totalProductosComprados = array();
 
 					foreach ($listaProductos as $key => $value) {
