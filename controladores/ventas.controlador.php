@@ -75,9 +75,9 @@ static public function ctrCrearVenta(){
 						   "total"=>$_POST["totalVenta"],
 							 "estado_venta"=>"1"
 						   );
-							// var_dump($datos);
+							 var_dump($datos);
 			$respuesta = ModeloVentas::mdlIngresarVenta($tabla, $datos);
-			//var_dump($respuesta);
+			var_dump($respuesta);
 			if($respuesta == "ok"){
 				echo'<script>
 
