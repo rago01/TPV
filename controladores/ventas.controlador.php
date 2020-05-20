@@ -21,11 +21,12 @@ CREAR VENTA
 static public function ctrCrearVenta(){
 
 	if(isset($_POST["nuevaVenta"])){
+		var_dump($_POST);
 		/*=============================================
 		ACTUALIZAR LAS COMPRAS DEL CLIENTE Y REDUCIR EL STOCK Y AUMENTAR LAS VENTAS DE LOS PRODUCTOS
 		=============================================*/
 		$listaProductos = json_decode($_POST["listaProductos"], true);
-		var_dump($listaProductos);
+		//var_dump($listaProductos);
 		$totalProductosComprados = array();
 
 					foreach ($listaProductos as $key => $value) {
