@@ -32,7 +32,7 @@ static public function ctrCrearVenta(){
 					foreach ($listaProductos as $key => $value) {
 						array_push($totalProductosComprados, $value["cantidad"]);
 
-						var_dump($value);
+						  //var_dump($value);
 						   $tablaProductos = "productos_venta";
 
 					     $item = "id_producto";
@@ -40,7 +40,7 @@ static public function ctrCrearVenta(){
 							 $valora = "id_pruducto";
 					     $traerProducto = ModeloProductosVenta::mdlMostrarProductosVenta($tablaProductos, $item, $valor,$valora);
 
-							 var_dump($traerProducto);
+							 //var_dump($traerProducto);
 							 $item1a = "ventas";
 							 $valor1a = $value["cantidad"] + $traerProducto["ventas"];
 
