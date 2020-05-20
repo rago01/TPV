@@ -21,7 +21,7 @@ CREAR VENTA
 static public function ctrCrearVenta(){
 
 	if(isset($_POST["nuevaVenta"])){
-		var_dump($_POST);
+		//var_dump($_POST);
 		/*=============================================
 		ACTUALIZAR LAS COMPRAS DEL CLIENTE Y REDUCIR EL STOCK Y AUMENTAR LAS VENTAS DE LOS PRODUCTOS
 		=============================================*/
@@ -40,7 +40,7 @@ static public function ctrCrearVenta(){
 
 					     $traerProducto = ModeloProductosVenta::mdlMostrarProductosVenta($tablaProductos, $item, $valor);
 
-							 //var_dump($traerProducto);
+							 var_dump($traerProducto);
 							 $item1a = "ventas";
 							 $valor1a = $value["cantidad"] + $traerProducto["ventas"];
 
@@ -53,7 +53,7 @@ static public function ctrCrearVenta(){
 
 			$traerCliente = ModeloClientes::mdlMostrarClientes($tablaClientes, $item, $valor);
 
-			//var_dump($traerCliente);
+			var_dump($traerCliente);
 			$item1 = "compras";
   		$valor1 = array_sum($totalProductosComprados) + $traerCliente['compras'];
 
@@ -63,7 +63,7 @@ static public function ctrCrearVenta(){
 			/*=============================================
 			GUARDAR LA COMPRA
 			=============================================*/
-
+			date_default_timezone_set('America/Bogota');
 			$tabla = "ventas";
 
 			$datos = array(
