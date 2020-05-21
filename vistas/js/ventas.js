@@ -76,7 +76,7 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function(){
 	          '<div class="col-xs-6" style="padding-right:0px">'+
 	            '<div class="input-group">'+
 	              '<span class="input-group-addon"><button type="button" class="btn btn-danger btn-xs quitarProducto" id_producto="'+id_producto+'"><i class="fa fa-times"></i></button></span>'+
-	              '<input type="text" class="form-control nuevaDescripcionProducto" id_producto="'+id_producto+'" nombre_producto="'+nombre_producto+'" name="agregarProducto" value="'+descripcion_producto+'" readonly required>'+
+	              '<input type="text" class="form-control nuevaDescripcionProducto" id_producto="'+id_producto+'" nombre_producto="'+nombre_producto+'" name="agregarProducto" value="'+nombre_producto+'" readonly required>'+
 	            '</div>'+
 	          '</div>'+
 
@@ -181,7 +181,7 @@ $(".btnAgregarProducto").click(function(){
           $(".nuevoProducto").append(
         '<div class="row" style="padding:5px 15px">'+
           '<!-- Descripción del producto -->'+
-              '<div class="col-xs-7" style="padding-right:0px">'+
+              '<div class="col-xs-11" style="padding-right:0px">'+
                 '<div class="input-group">'+
                   '<span class="input-group-addon"><button type="button" class="btn btn-danger btn-xs quitarProducto" id_producto><i class="fa fa-times"></i></button></span>'+
                   '<select class="form-control nuevaDescripcionProducto productoSeleccionado" id="'+numProducto+'" id_producto  required>'+
@@ -191,18 +191,20 @@ $(".btnAgregarProducto").click(function(){
               '</div>'+
 
               '<!-- Cantidad del producto -->'+
-              '<div class="col-xs-2 ingresoCantidad">'+
+              '<div class="col-xs-5 ingresoCantidad">'+
   	             '<input type="number" class="form-control nuevaCantidadProducto" name="nuevaCantidadProducto" min="1" value="1"  required>'+
-  	          '</div>' +
+  	          '</div>'+
 
               '<!-- Precio del producto -->'+
-              '<div class="col-xs-3 ingresoPrecio" style="padding-left:0px">'+
+              '<div class="col-xs-7 ingresoPrecio" style="padding-left:0px">'+
                 '<div class="input-group">'+
                   '<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
                   '<input type="text" class="form-control nuevoPrecioProducto " precioReal="" name="nuevoPrecioProducto" value=""  readonly required>'+
                 '</div>'+
               '</div>'+
-            '</div>');
+              '<hr>'+
+            '</div>'
+          );
 	        // AGREGAR LOS PRODUCTOS AL SELECT
 
 	         respuesta.forEach(funcionForEach);

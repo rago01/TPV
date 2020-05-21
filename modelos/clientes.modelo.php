@@ -7,9 +7,8 @@ class ModeloClientes{
   static public function mdlMostrarClientes($tabla,$item,$valor){
 
     if ($item != null) {
-      $sql="SELECT * FROM $tabla WHERE $item = :$item ";
+      $sql="SELECT * FROM $tabla WHERE $item = '".$valor."' ";
       $stmt = Conexion::conectar()->prepare($sql);
-      $stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
       $stmt -> execute();
       return $stmt -> fetch();
     }else {
@@ -27,7 +26,7 @@ REGISTRAR CLIENTE
   =============================================*/
 
   static public function mdlIngresarCliente($tabla, $datos){
-   echo $sql="INSERT INTO $tabla (id_perfil, nombres, apellidos, celular,  email, direccion, compras)
+    $sql="INSERT INTO $tabla (id_perfil, nombres, apellidos, celular,  email, direccion, compras)
           VALUES (:perfil, :nombres, :apellidos,:celular, :email, :direccion, :compras)";
     $stmt = Conexion::conectar()->prepare($sql);
 
@@ -54,14 +53,13 @@ REGISTRAR CLIENTE
 
 	static public function mdlActualizarCliente($tabla, $item1, $valor1, $valor){
 
-		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET $item1 = :$item1 WHERE id_cliente = :id_cliente");
-		$stmt -> bindParam(":".$item1, $valor1, PDO::PARAM_STR);
-		$stmt -> bindParam(":id_cliente", $valor, PDO::PARAM_STR);
+    $sql="UPDATE $tabla SET $item1 = '".$valor1."' WHERE id_cliente = '".$valor."'";
 
+    $stmt = Conexion::conectar()->prepare($sql);
 		if($stmt -> execute()){
 			return "ok";
 		}else{
-			return "error";
+			return $sql;
 		}
 
 		$stmt -> close();

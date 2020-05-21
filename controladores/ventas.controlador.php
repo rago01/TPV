@@ -198,12 +198,9 @@ static public function ctrEditarVenta(){
 			FORMATEAR TABLA DE PRODUCTOS Y LA DE CLIENTES
 			=============================================*/
 		$tabla = "ventas";
-
 		$item = "id_venta";
 		$valor = $_POST['editarVenta'];
 		$traerVenta = ModeloVentas::mdlMostrarVentas($tabla, $item, $valor);
-
-
 		//var_dump($traerVenta);
 		/*=============================================
 			REVISAR SI VIENE PRODUCTOS EDITADOS
@@ -211,56 +208,61 @@ static public function ctrEditarVenta(){
 
 			if($_POST["listaProductos"] == ""){
 			  $listaProductos = $traerVenta["productos"];
-				$cambioProducto = 0;
+				$cambioProducto = false;
 			}else{
 		    $listaProductos = $_POST["listaProductos"];
-				$cambioProducto = 1;
+				$cambioProducto = true;
 			}
 
-			if ($cambioProducto == 1){
+			if ($cambioProducto){
 
-								$listaProductos = json_decode($traerVenta['productos'], true);
+								$productos = json_decode($traerVenta['productos'], true);
 								$totalProductosComprados = array();
-								//var_dump($listaProductos);
-
-								foreach ($listaProductos as $key => $value) {
+								foreach ($productos as $key => $value) {
 									/*=============================================
 										FORMATEANDO LA TABLA DE PRODUCTOS PARA EL NUMERO DE VENTAS
 									=============================================*/
 									//var_dump($value);
 									array_push($totalProductosComprados, $value["cantidad"]);
+
+									//echo $value['cantidad'];
+
 									$tablaProductos = "productos_venta";
 
 									$item = "id_producto";
 									$valor = $value["id_producto"];
-									$traerProducto = ModeloProductosVenta::mdlMostrarProductosVenta($tablaProductos, $item, $valor);
-
+									$orden = "id_producto";
+									$traerProducto = ModeloProductosVenta::mdlMostrarProductosVenta($tablaProductos, $item, $valor, $orden);
+									var_dump($traerProducto);
+									echo 'cantidad en la base Actual'.$traerProducto['ventas'];
+									echo 'cantidad Modificada por el usuario'.$value['cantidad'];
+								  echo 	$valor1a = $traerProducto["ventas"] - $value["cantidad"];
 									$item1a = "ventas";
 									$valor1a = $traerProducto["ventas"] - $value["cantidad"];
 									$nuevasVentas = ModeloProductosVenta::mdlActualizarProductoVenta($tablaProductos, $item1a, $valor1a, $valor);
 
+									//var_dump($nuevasVentas);
 							}
+							var_dump($totalProductosComprados);
 					    $tablaClientes = "clientes";
 							$item = "id_cliente";
 							$valor = $_POST["seleccionarCliente"];
 
 							$traerCliente = ModeloClientes::mdlMostrarClientes($tablaClientes, $item, $valor);
-
+							//var_dump($traerCliente);
 							$item1 = "compras";
 							$valor1 =$traerCliente['compras'] - array_sum($totalProductosComprados);
 
 							$comprasCliente = ModeloClientes::mdlActualizarCliente($tablaClientes, $item1, $valor1, $valor);
 							/*=============================================
-							ACTUALIZAR LAS COMPRAS DEL CLIENTE Y REDUCIR EL STOCK Y AUMENTAR LAS VENTAS DE LOS PRODUCTOS
+							ACTUALIZAR LAS COMPRAS DEL CLIENTE  Y AUMENTAR LAS VENTAS DE LOS PRODUCTOS
 							=============================================*/
 							$listaProductos_2 = json_decode($listaProductos, true);
-							//var_dump($listaProductos_2);
+
 							$totalProductosComprados_2 = array();
 
 								foreach ($listaProductos_2 as $key => $value) {
-
 													array_push($totalProductosComprados_2, $value["cantidad"]);
-
 															$tablaProductos_2 = "productos_venta";
 
 															$item_2 = "id_producto";
@@ -268,6 +270,7 @@ static public function ctrEditarVenta(){
 
 															$traerProducto_2 = ModeloProductosVenta::mdlMostrarProductosVenta($tablaProductos_2, $item_2, $valor_2);
 
+														//	 var_dump($totalProductosComprados_2);
 															$item1a_2 = "ventas";
 															$valor1a_2 = $value["cantidad"] + $traerProducto_2["ventas"];
 
@@ -281,19 +284,21 @@ static public function ctrEditarVenta(){
 
 								$traerCliente_2 = ModeloClientes::mdlMostrarClientes($tablaClientes_2, $item_2, $valor_2);
 
-								//var_dump($traerCliente);
+								//var_dump($traerCliente_2);
 								$item1a_2 = "compras";
 					  		$valor1a_2 = array_sum($totalProductosComprados_2) + $traerCliente_2['compras'];
 
 								$comprasCliente_2 = ModeloClientes::mdlActualizarCliente($tablaClientes_2, $item1a_2, $valor1a_2, $valor_2);
-
-
-					}
+}
 
 
 	// 		/*=============================================
 	// 		GUARDAR LA COMPRA
 	// 		=============================================*/
+	// echo "COMO ARRAY";
+	// var_dump($listaProductos);
+
+
 		//$listaProductos $traerVenta['productos'];
 			$tabla = "ventas";
 			date_default_timezone_set('America/Bogota');
@@ -308,8 +313,8 @@ static public function ctrEditarVenta(){
 						   "total"=>$_POST["totalVenta"],
 							 "estado_venta"=>"1"
 						   );
-							// var_dump($datos);
-		//	$respuesta = ModeloVentas::mdlEditarVenta($tabla, $datos);
+							 var_dump($datos);
+			$respuesta = ModeloVentas::mdlEditarVenta($tabla, $datos);
 			//var_dump($respuesta);
 			if($respuesta == "ok"){
 				echo'<script>

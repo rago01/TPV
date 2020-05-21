@@ -12,10 +12,9 @@ class ModeloProductosVenta{
 
 			if($item != null){
 
-	      $sql="SELECT * FROM $tabla WHERE $item = :$item";
+	      $sql="SELECT * FROM $tabla WHERE $item = '".$valor."'";
 
 				$stmt = Conexion::conectar()->prepare($sql);
-				$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
 				$stmt -> execute();
 				return $stmt -> fetch();
 			}else{
@@ -110,13 +109,11 @@ static public function mdlBorrarProducto($tabla, $datos){
 
 	static public function mdlActualizarProductoVenta($tabla, $item1, $valor1, $valor){
 
-		$sql="UPDATE $tabla SET $item1 = :$item1 WHERE id_producto = :id_producto";
+		$sql="UPDATE $tabla SET $item1 = '".$valor1."' WHERE id_producto = '".$valor."'";
 		$stmt = Conexion::conectar()->prepare($sql);
-		$stmt -> bindParam(":".$item1, $valor1, PDO::PARAM_STR);
-		$stmt -> bindParam(":id_producto", $valor, PDO::PARAM_STR);
 
 		if($stmt -> execute()){
-			return $sql;
+			return "ok";
 		}else{
 			return $sql;
 		}

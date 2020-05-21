@@ -81,12 +81,12 @@
 
                         $listaProducto = json_decode($ventas["productos"], true);
                         foreach($listaProducto as $key => $productos_venta) {
-                        //  echo $productos_venta;
+                          //var_dump($productos_venta);
                           $item = "id_producto";
                           $valor = $productos_venta["id_producto"];
                         $orden = "ventas";
                         $respuesta = ControladorProductosVenta::ctrMostrarProductoVenta($item, $valor, $orden);
-
+                        //var_dump($respuesta);
                    echo '<div class="row" style="padding:5px 15px">
                              <div class="col-xs-6" style="padding-right:0px">
                                <div class="input-group">
@@ -189,9 +189,7 @@
                 <table class="table table-bordered table-striped dt-responsive tablaVentas">
                   <thead>
                     <tr>
-                      <th>NOMBRE PRODUCTO</th>
-                      <th>DESCRIPCION</th>
-                      <th>IMAGEN</th>
+                      <th>PRODUCTO</th>
                       <th>PRECIO VENTA</th>
                       <th>ACCIONES</th>
                     </tr>
@@ -201,19 +199,18 @@
 
                   $item = null;
                   $valor = null;
-
-                  $productos = ControladorProductosVenta::ctrMostrarProductoVenta($item, $valor);
+                  $orden = "id_producto";
+                  $productos = ControladorProductosVenta::ctrMostrarProductoVenta($item, $valor, $orden);
                   //var_dump($productos);
                 foreach($productos as $key => $producto) {
                       echo
                       '<tr class="text-uppercase">
-                            <td><p>'.$producto['nombre_producto'].'</p></td>
-                            <td><p>'.$producto['descripcion_producto'].'</p> </td>
-                            <td><p> <img src="'.$producto['imagen'].'" class="img-responsive"> </p>';
-                       echo'</td>
+                            <td style="width:250px"><p><strong>'.$producto['nombre_producto'].'</strong></p><p>'.$producto['descripcion_producto'].'</p>
+                            <p> <img style="width:100px" src="'.$producto['imagen'].'" class="img-responsive"> </p></td>
+
                             <td><p> $'.$producto['precio_venta'].'</p></td>
-                            <td>
-                              <div class="btn-group">
+                            <td style="width:200px">
+                              <div class="btn-group text-center">
                                 <button type="button" class="btn btn-primary agregarProducto recuperarBoton" id_producto="'.$producto['id_producto'].'">Agregar</button>
                               </div>
                             </td>

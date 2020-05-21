@@ -12,9 +12,8 @@ class ModeloVentas{
 
 		if($item != null){
 			$sql ="SELECT * FROM $tabla
-				 WHERE $item = :$item ORDER BY fecha_venta DESC";
+				 WHERE $item = '".$valor."' ORDER BY id_venta ASC";
 			$stmt = Conexion::conectar()->prepare($sql);
-			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
 			$stmt -> execute();
 			return $stmt -> fetch();
 
@@ -74,32 +73,27 @@ class ModeloVentas{
 	static public function mdlEditarVenta($tabla, $datos){
 
 
-		$sql ="UPDATE $tabla SET id_cliente = :id_cliente, resp_venta = :resp_venta, hora_venta= :hora_venta,
-		fecha_venta = :fecha_venta, productos = :productos, metodo_pago = :metodo_pago, total = :total,
-		estado_venta= :estado_venta WHERE id_venta = :id_venta";
+		$sql ="UPDATE $tabla SET id_cliente = '".$datos["id_cliente"]."', resp_venta = '".$datos["resp_venta"]."', hora_venta= '".$datos["hora_venta"]."',
+		fecha_venta = '".$datos["fecha_venta"]."', productos = '".$datos["productos"]."', metodo_pago = '".$datos["metodo_pago"]."', total = '".$datos["total"]."',
+		estado_venta= '".$datos["estado_venta"]."' WHERE id_venta = '".$datos["id_venta"]."'";
 
 		$stmt = Conexion::conectar()->prepare($sql);
 
-		$stmt->bindParam(":id_venta", $datos["id_venta"], PDO::PARAM_INT);
-		$stmt->bindParam(":id_cliente", $datos["id_cliente"], PDO::PARAM_INT);
-		$stmt->bindParam(":resp_venta", $datos["resp_venta"], PDO::PARAM_INT);
-		$stmt->bindParam(":hora_venta", $datos["hora_venta"], PDO::PARAM_INT);
-		$stmt->bindParam(":fecha_venta", $datos["fecha_venta"], PDO::PARAM_INT);
-		$stmt->bindParam(":productos", $datos["productos"], PDO::PARAM_STR);
-		$stmt->bindParam(":metodo_pago", $datos["metodo_pago"], PDO::PARAM_STR);
-		$stmt->bindParam(":total", $datos["total"], PDO::PARAM_STR);
-		$stmt->bindParam(":estado_venta", $datos["estado_venta"], PDO::PARAM_STR);
+		// $stmt->bindParam(":id_venta", $datos["id_venta"], PDO::PARAM_INT);
+		// $stmt->bindParam(":id_cliente", $datos["id_cliente"], PDO::PARAM_INT);
+		// $stmt->bindParam(":resp_venta", $datos["resp_venta"], PDO::PARAM_INT);
+		// $stmt->bindParam(":hora_venta", $datos["hora_venta"], PDO::PARAM_INT);
+		// $stmt->bindParam(":fecha_venta", $datos["fecha_venta"], PDO::PARAM_INT);
+		// $stmt->bindParam(":productos", $datos["productos"], PDO::PARAM_STR);
+		// $stmt->bindParam(":metodo_pago", $datos["metodo_pago"], PDO::PARAM_STR);
+		// $stmt->bindParam(":total", $datos["total"], PDO::PARAM_STR);
+		// $stmt->bindParam(":estado_venta", $datos["estado_venta"], PDO::PARAM_STR);
 
 		if($stmt->execute()){
-
 			return "ok";
-
 		}else{
-
 			return $sql;
-
 		}
-
 		$stmt->close();
 		$stmt = null;
 
