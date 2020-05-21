@@ -156,5 +156,6 @@ echo '<div class="wrapper">';
   <script src="vistas/js/ventas.js"></script>
   <script src="vistas/js/reportes.js"></script>
   <script src="vistas/js/clientes.js"></script>
+  <script src="vistas/js/ordenes.js"></script>
 </body>
 </html>
