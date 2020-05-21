@@ -22,7 +22,7 @@ class ModeloVentas{
 			$sql ="SELECT v.id_venta,resp_venta,hora_venta,fecha_venta,metodo_pago,total,u.id_user id_user,u.nombres nombres_usuario,u.apellidos apellidos_usuario,
 										c.id_cliente id_cliente,c.nombres nombres_cliente,c.apellidos apellidos_cliente,compras
 											FROM $tabla v INNER JOIN users u on u.id_user=v.resp_venta
-											INNER JOIN clientes c on c.id_cliente=v.id_cliente ORDER BY fecha_venta ASC";
+											INNER JOIN clientes c on c.id_cliente=v.id_cliente ORDER BY id_venta DESC";
 			$stmt = Conexion::conectar()->prepare($sql);
 			$stmt -> execute();
 			return $stmt -> fetchAll();
@@ -39,7 +39,8 @@ class ModeloVentas{
 
 
 		$sql ="INSERT INTO $tabla(id_cliente, resp_venta, hora_venta, fecha_venta, productos, metodo_pago, total, estado_venta)
-		 VALUES ( :id_cliente, :resp_venta, :hora_venta,:fecha_venta, :productos,:metodo_pago, :total, :estado_venta)";
+		VALUES ( '".$datos["id_cliente"]."', '".$datos["resp_venta"]."', '".$datos["hora_venta"]."', '".$datos["fecha_venta"]."', '".$datos["productos"]."',
+							'".$datos["metodo_pago"]."', '".$datos["total"]."', '".$datos["estado_venta"]."')";
 		$stmt = Conexion::conectar()->prepare($sql);
 
 		$stmt->bindParam(":id_cliente", $datos["id_cliente"], PDO::PARAM_INT);
