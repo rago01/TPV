@@ -267,8 +267,8 @@ static public function ctrEditarVenta(){
 
 															$item_2 = "id_producto";
 															$valor_2 = $value["id_producto"];
-
-															$traerProducto_2 = ModeloProductosVenta::mdlMostrarProductosVenta($tablaProductos_2, $item_2, $valor_2);
+															$orden = "id_producto";
+															$traerProducto_2 = ModeloProductosVenta::mdlMostrarProductosVenta($tablaProductos_2, $item_2, $valor_2, $orden);
 
 														//	 var_dump($totalProductosComprados_2);
 															$item1a_2 = "ventas";
