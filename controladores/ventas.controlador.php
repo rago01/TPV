@@ -77,16 +77,10 @@ static public function ctrCrearVenta(){
 							 "estado_venta"=>"1"
 						   );
 							 //var_dump($datos)
-							 $sql ="INSERT INTO $tabla(id_cliente, resp_venta, hora_venta, fecha_venta, productos, metodo_pago, total, estado_venta)
-					 		 VALUES ( '".$datos["id_cliente"]."', '".$datos["resp_venta"]."', '".$datos["hora_venta"]."', '".$datos["fecha_venta"]."', '".$datos["productos"]."',
-							 					 '".$datos["metodo_pago"]."', '".$datos["total"]."', '".$datos["estado_venta"]."')";
-					 		 $respuesta = Conexion::conectar()->prepare($sql);
-							 $respuesta -> execute();
 
-							 echo $sql;
-			// $respuesta = ModeloVentas::mdlIngresarVenta($tabla, $datos);
-			// var_dump($respuesta);
-			if($respuesta -> execute()){
+			$respuesta = ModeloVentas::mdlIngresarVenta($tabla, $datos);
+			var_dump($respuesta);
+			if($respuesta == "ok"){
 				echo'<script>
 
 				localStorage.removeItem("rango");

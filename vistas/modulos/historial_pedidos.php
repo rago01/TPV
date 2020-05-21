@@ -36,7 +36,7 @@
                 <th>ACCIONES</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody class="text-uppercase text-info">
             <?php
             if(isset($_GET["fechaInicial"])){
 
@@ -50,13 +50,32 @@
 
           }
             $cliente = $_SESSION['id_cliente'];
-            $sql_ordenes="SELECT id_venta, id_cliente, hora_venta, fecha_venta, productos, total FROM ventas
-                          WHERE id_cliente = $cliente AND resp_venta in (0) AND metodo_pago ='PENDIENTE' AND estado_venta = '2'  ";
+            $sql_ordenes="SELECT v.id_venta,c.nombres nombres_cliente,c.apellidos apellidos_cliente,v.hora_venta,v.fecha_venta,v.productos,v.total
+                          FROM ventas v INNER JOIN clientes c on c.id_cliente=v.id_cliente
+                          WHERE v.id_cliente = '$cliente' AND resp_venta in (0) AND metodo_pago ='PENDIENTE' AND estado_venta = '2'";
                           $consulta_orden=Conexion::conectar()->prepare($sql_ordenes);
                           $consulta_orden->execute();
-
+                          echo $sql_ordenes;
                           foreach ($consulta_orden as $key => $value) {
-                            var_dump(json_decode($value['productos'], true));
+
+                          $productos = json_decode($value['productos'], true);
+
+                              echo'<tr>
+                                        <td>'.$value['id_venta'].'</td>
+                                        <td width="200px">'.$value['nombres_cliente'].' '.$value['apellidos_cliente'].'</td>
+                                        <td> <p>'.$value['fecha_venta'].'</p><p> '.$value['hora_venta'].'</p></td>
+                                        <td>'.$value['total'].'</td>
+                                        <td>
+                                         <div class="btn-group">
+                                            <button class="btn btn-info btnImprimirFactura" id_venta="'.$venta["id_venta"].'">
+                                            <i class="fa fa-print"></i></button>
+                                              <button class="btn btn-warning btnEditarVenta" id_venta="'.$venta["id_venta"].'">
+                                            <i class="fa fa-pencil"></i></button>
+                                            <button class="btn btn-danger btnEliminarVenta" id_venta="'.$venta["id_venta"].'">
+                                            <i class="fa fa-times"></i></button>
+                                          </div>
+                                        </td>
+                                     </tr>';
 
                           }
 
