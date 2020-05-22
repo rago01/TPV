@@ -12,7 +12,7 @@ class ModeloProductosVenta{
 
 			if($item != null){
 
-	      $sql="SELECT * FROM $tabla WHERE $item = '".$valor."'";
+	      $sql="SELECT * FROM $tabla WHERE $item = '".$valor."' ORDER BY $orden DESC";
 
 				$stmt = Conexion::conectar()->prepare($sql);
 				$stmt -> execute();

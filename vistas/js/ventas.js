@@ -100,6 +100,7 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function(){
          listarProductos()
          // FORMATO AL PRECIO
          $(".nuevoPrecioProducto").number(true, 2);
+         localStorage.removeItem("quitarProducto");
 		}
 
 	});
@@ -222,46 +223,14 @@ $(".btnAgregarProducto").click(function(){
 	})
 })
 
-// SELECCIONAR PRODUCTO DE LA VENTA EN DISPOSITIVOS
-$(".formularioVenta").on("change","select.productoSeleccionado",function(){
-	// Capturamos el id del producto seleccionado
-	var id_producto=$(this).attr("id");
-  console.log("id_producto", id_producto);
-	if(id_producto!=""){
-		var productoSeleccionado=$(this).parent().parent().parent().children().children().children(".productoSeleccionado");
-		var cantidadProducto=$(this).parent().parent().parent().children(".divStock").children().children(".cantidadProducto");
-		var precioProducto=$(this).parent().parent().parent().children(".divPrecio").children().children(".precioProducto");
-		var datos=new FormData();
-		datos.append("id_producto",id_producto);
-		$.ajax({
-			url:"ajax/productos_venta.ajax.php",
-			method:"POST",
-			data:datos,
-			cache:false,
-			contentType:false,
-			processData:false,
-			dataType:"json",
-			success:function(respuesta){
-        console.log(respuesta);
-				$(productoSeleccionado).attr("idProducto",respuesta["id"]);
-				$(cantidadProducto).attr("stock",respuesta["stock"]);
-				$(precioProducto).val(respuesta["precio_venta"]);
-				$(precioProducto).attr("precioReal",respuesta["precio_venta"]);
-				sumarTotalPrecios(); // Sumar total de Precios
-				//activarTipoPago(); // Activamos o desactivamos la opción de Tipo_Pago
-				listarProductos(); // Agrupamos productos en formato JSON
-			}
-		});}
-	else{
-		$("#cantidadProducto").removeAttr("required");
-		$("#cantidadProducto").attr("readonly",true);}
-});
+
+
 /*=============================================
 SELECCIONAR PRODUCTO
 =============================================*/
 $(".formularioVenta").on("change", "select.nuevaDescripcionProducto", function(){
   var nombreProducto = $(this).val();
-  //console.log("nombre producto", nombreProducto);
+  console.log("nombre producto", nombreProducto);
   var nuevoPrecioProducto = $(this).parent().parent().parent().children(".ingresoPrecio").children().children(".nuevoPrecioProducto");
   var nuevaDescripcionProducto = $(this).parent().parent().parent().children().children().children(".nuevaDescripcionProducto");
   var nuevaCantidadProducto = $(this).parent().parent().parent().children(".ingresoCantidad").children(".nuevaCantidadProducto");
@@ -277,11 +246,12 @@ $(".formularioVenta").on("change", "select.nuevaDescripcionProducto", function()
       	processData: false,
       	dataType:"json",
       	success:function(respuesta){
-          //console.log(respuesta);
+          console.log(respuesta);
       	    $(nuevoPrecioProducto).val(respuesta["precio_venta"]);
             $(nuevoPrecioProducto).attr("precioReal", respuesta["precio_venta"]);
   	      // AGRUPAR PRODUCTOS EN FORMATO JSON
-          listarProductos()
+          listarProductos();
+          sumarTotalPrecios();
       	}
       })
 })
@@ -404,9 +374,7 @@ $(".formularioVenta").on("change", "input#nuevoCodigoTransaccion", function(){
 /*=============================================
 LISTAR TODOS LOS PRODUCTOS
 =============================================*/
-
 function listarProductos(){
-
 	var listaProductos = [];
 	var descripcion = $(".nuevaDescripcionProducto");
 	var cantidad = $(".nuevaCantidadProducto");
@@ -424,8 +392,9 @@ function listarProductos(){
 	}
 //  console.log("listaProductos", JSON.stringify(listaProductos));
 	$("#listaProductos").val(JSON.stringify(listaProductos));
-
 }
+
+
 /*=============================================
 LISTAR MÉTODO DE PAGO
 =============================================*/

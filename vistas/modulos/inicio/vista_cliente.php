@@ -94,7 +94,7 @@
                   <div class="col-xs-5" style="padding-right:0px">
                     <div class="input-group">
                       <label>Información para entrega</label>
-                      <select name="infoPago" id="nuevoMetodoEntrega" class="form-control">
+                      <select name="infoMetodoEntrega" id="nuevoMetodoEntrega" class="form-control">
                           <option value="1">Pagar en la caja</option>
                           <option value="2">Entrega en mi domicilio</option>
                           <option value="3">Entrega en otro domicilio</option>
@@ -105,7 +105,7 @@
 
                   </div>
 
-                  <input type="hidden" name="listaMetodoPago" id="listaMetodoPago" value="">
+                  <input type="hidden" name="listaMetodoEntrega" id="listaMetodoEntrega" value="">
 
                 </div>
                   <br>
@@ -116,7 +116,7 @@
       </div>
     </form>
     <?php
-         $guardarOrden = new ControladorVentas();
+         $guardarOrden = new ControladorOrdenes();
          $guardarOrden -> ctrCrearOrden();
        ?>
     </div>

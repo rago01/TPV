@@ -17,7 +17,6 @@ class ControladorVentas{
 /*=============================================
 CREAR VENTA
 =============================================*/
-
 static public function ctrCrearVenta(){
 
 	if(isset($_POST["nuevaVenta"])){
@@ -80,92 +79,6 @@ static public function ctrCrearVenta(){
 
 			$respuesta = ModeloVentas::mdlIngresarVenta($tabla, $datos);
 			var_dump($respuesta);
-			if($respuesta == "ok"){
-				echo'<script>
-
-				localStorage.removeItem("rango");
-
-				swal({
-						type: "success",
-						title: "Se ha realizado la venta con éxito!",
-						showConfirmButton: true,
-						confirmButtonText: "Cerrar"
-						}).then((result) => {
-								if (result.value) {
-								window.location = "crear_venta";
-								}
-							})
-				</script>';
-
-			}
-	}
-
-}
-
-/*=============================================
-CREAR ORDEN PARA CLIENTES
-=============================================*/
-
-static public function ctrCrearOrden(){
-
-	if(isset($_POST["nuevaVenta"])){
-		/*=============================================
-		ACTUALIZAR LAS COMPRAS DEL CLIENTE Y REDUCIR EL STOCK Y AUMENTAR LAS VENTAS DE LOS PRODUCTOS
-		=============================================*/
-		$listaProductos = json_decode($_POST["listaProductos"], true);
-	//	var_dump($listaProductos);
-		$totalProductosComprados = array();
-					//
-					// foreach ($listaProductos as $key => $value) {
-					// 	array_push($totalProductosComprados, $value["cantidad"]);
-					//
-					// 	//var_dump($value);
-					// 	   $tablaProductos = "productos_venta";
-					//
-					//      $item = "id_producto";
-					//      $valor = $value["id_producto"];
-					//
-					//      $traerProducto = ModeloProductosVenta::mdlMostrarProductosVenta($tablaProductos, $item, $valor);
-					//
-					// 		 //var_dump($traerProducto);
-					// 		 $item1a = "ventas";
-					// 		 $valor1a = $value["cantidad"] + $traerProducto["ventas"];
-					//
-					//      $nuevasVentas = ModeloProductosVenta::mdlActualizarProductoVenta($tablaProductos, $item1a, $valor1a, $valor);
-					// 		 var_dump($nuevasVentas);
-					// }
-			// $tablaClientes = "clientes";
-			// $item = "id_cliente";
-			// $valor = $_POST["seleccionarCliente"];
-			//
-			// $traerCliente = ModeloClientes::mdlMostrarClientes($tablaClientes, $item, $valor);
-			//
-			// //var_dump($traerCliente);
-			// $item1 = "compras";
-  		// $valor1 = array_sum($totalProductosComprados) + $traerCliente['compras'];
-			//
-			// $comprasCliente = ModeloClientes::mdlActualizarCliente($tablaClientes, $item1, $valor1, $valor);
-			// //var_dump($comprasCliente);
-
-			/*=============================================
-			GUARDAR LA COMPRA
-			=============================================*/
-
-			$tabla = "ventas";
-
-			$datos = array(
-							 "id_cliente"=>$_SESSION['id_cliente'],
-							 "resp_venta"=>"0",
-						   "hora_venta"=>date("H:i:s"),
-							 "fecha_venta"=>date("Y-m-d"),
-						   "productos"=>$_POST["listaProductos"],
-							 "metodo_pago"=>"PENDIENTE",
-						   "total"=>$_POST["totalVenta"],
-							 "estado_venta"=>"2"
-						   );
-							 var_dump($datos);
-			$respuesta = ModeloVentas::mdlIngresarVenta($tabla, $datos);
-			//var_dump($respuesta);
 			if($respuesta == "ok"){
 				echo'<script>
 
