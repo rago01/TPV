@@ -18,34 +18,49 @@
             </button>
         </div>
         <div class="box-body table">
-          <table class="table table-bordered table-striped dt-responsive tablas">
+          <table class="table table-bordered table-striped dt-responsive ">
             <thead>
               <tr>
-                <th style="width:10px;">#</th>
+                <th width="10px">#</th>
                 <th>PROVEEDOR</th>
-                <th>CONTACTO</th>
-                <th>ESTADO</th>
+                <th>CONTACTO DIRECTO</th>
                 <th>ACCIONES</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>user </td>
-                <td>data</td>
-                <td>active</td>
-                <td>
-                  <div class="btn-group">
-                    <button class="btn btn-warning"> <i class="fa fa-pencil"></i> </button>
-                    <button class="btn btn-danger"> <i class="fa fa-times"></i> </button>
-                  </div>
-                </td>
-              </tr>
+              <?php
+
+              $tabla = "proveedores";
+              $item = null;
+              $valor = null;
+
+              $proveedores = ModeloProveedores::mdlMostrarProveedores($tabla, $item,$valor);
+
+              foreach ($proveedores as $key => $proveedor) {
+
+                echo '
+                <tr>
+                    <td>'.$proveedor["id_prov"].'</td>
+                    <td >
+                      <p>'.$proveedor["nombre"].'</p>
+                      <p><strong>'.$proveedor["tipo_doc"].': </strong>'.$proveedor["doc"].'</p>
+                      <p>'.$proveedor["email"].'</p>
+                      <p>'.$proveedor["telefono"].'</p>
+                      <p>'.$proveedor["direccion"].'</p>
+                    </td>
+                    <td><p>'.$proveedor["contacto"].'</p></td>
+                    <td width="200px">
+                      <div class="btn-group">
+                        <button class="btn btn-warning"> <i class="fa fa-pencil"></i> </button>
+                        <button class="btn btn-danger"> <i class="fa fa-times"></i> </button>
+                      </div>
+                    </td>
+                </tr>
+                      ';
+              }
+              ?>
             </tbody>
           </table>
-        </div>
-        <div class="box-footer">
-          Footer
         </div>
       </div>
     </section>

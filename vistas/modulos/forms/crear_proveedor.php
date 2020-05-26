@@ -9,14 +9,14 @@
     <div class="form-group col-xs-12">
       <div class="input-group">
         <span class="input-group-addon"> <strong> Nombre ó Razón social</strong> </span>
-        <input type="text" class="form-control input-lg" name="nombres" required>
+        <input type="text" class="form-control input-lg" name="nuevoProveedor" required>
       </div>
     </div>
 
     <div class="form-group col-xs-12">
       <div class="input-group">
         <span class="input-group-addon"> <strong>Tipo de identificación</strong> </span>
-        <select class="form-control input-lg col-3" name="" required>
+        <select class="form-control input-lg col-3" name="tipo_doc" required>
           <option value=""></option>
           <option value="NIT">Nit</option>
           <option value="CC">Cedula de Ciudadania</option>
@@ -36,28 +36,21 @@
     <div class="form-group col-xs-12">
       <div class="input-group">
         <span class="input-group-addon"> <strong>Email</strong> </span>
-        <input type="email" class="form-control input-lg" name="doc" required>
+        <input type="email" class="form-control input-lg" name="email" required>
       </div>
     </div>
 
     <div class="form-group col-xs-12">
       <div class="input-group">
         <span class="input-group-addon"> <strong>Teléfono </strong> </span>
-        <input type="telefono" class="form-control input-lg" name="doc" required>
+        <input type="number" class="form-control input-lg" name="telefono" required>
       </div>
     </div>
 
     <div class="form-group col-xs-12">
       <div class="input-group">
-        <span class="input-group-addon"> <strong>Direccion</strong> </span>
+        <span class="input-group-addon"> <strong>Dirección</strong> </span>
         <input type="text" class="form-control input-lg" name="direccion" required>
-      </div>
-    </div>
-
-    <div class="form-group col-xs-12">
-      <div class="input-group">
-        <span class="input-group-addon"> <strong>Sitio web</strong> </span>
-        <input type="email" class="form-control input-lg " name="website" required>
       </div>
     </div>
 
@@ -67,14 +60,14 @@
       <div class="form-group col-xs-12">
         <div class="input-group">
           <span class="input-group-addon"> <strong>Nombre</strong> </span>
-          <input type="email" class="form-control input-lg " name="nom_contacto" required>
+          <input type="text" class="form-control input-lg " name="nom_contacto" required>
         </div>
       </div>
 
       <div class="form-group col-xs-12">
         <div class="input-group">
           <span class="input-group-addon"> <strong>Teléfono</strong> </span>
-          <input type="email" class="form-control input-lg " name="tel_contacto" required>
+          <input type="number" class="form-control input-lg " name="tel_contacto" required>
         </div>
       </div>
 
