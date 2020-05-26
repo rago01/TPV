@@ -18,10 +18,10 @@ class ModeloVentas{
 			return $stmt -> fetch();
 
 		}else{
-			$sql ="SELECT v.id_venta,resp_venta,hora_venta,fecha_venta,metodo_pago,total,u.id_user id_user,u.nombres nombres_usuario,u.apellidos apellidos_usuario,
+			$sql ="SELECT v.id_venta,resp_venta,hora_venta,fecha_venta,metodo_pago,total,estado_venta,u.id_user id_user,u.nombres nombres_usuario,u.apellidos apellidos_usuario,
 										c.id_cliente id_cliente,c.nombres nombres_cliente,c.apellidos apellidos_cliente,compras
 											FROM $tabla v INNER JOIN users u on u.id_user=v.resp_venta
-											INNER JOIN clientes c on c.id_cliente=v.id_cliente ORDER BY id_venta DESC";
+											INNER JOIN clientes c on c.id_cliente=v.id_cliente WHERE v.estado_venta in (1,2) ORDER BY id_venta ASC";
 			$stmt = Conexion::conectar()->prepare($sql);
 			$stmt -> execute();
 			return $stmt -> fetchAll();

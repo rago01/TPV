@@ -67,7 +67,7 @@ static public function ctrCrearVenta(){
 
 			$datos = array(
 							 "id_cliente"=>$_POST["seleccionarCliente"],
-							 "resp_venta"=>$_POST["responsable_venta"],
+							 "resp_venta"=>$_SESSION['id_user'],
 						   "hora_venta"=>date("H:i:s"),
 							 "fecha_venta"=>date("Y-m-d"),
 						   "productos"=>$_POST["listaProductos"],

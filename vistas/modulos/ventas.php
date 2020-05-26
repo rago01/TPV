@@ -13,14 +13,10 @@
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
               <li class="active"><a href="#facturadas" data-toggle="tab">Facturadas</a></li>
-              <li><a href="#ordenes" data-toggle="tab">Pendientes</a></li>
             </ul>
             <div class="tab-content">
               <div class="active tab-pane" id="facturadas">
                   <?php  include("facturadas.php") ?>
-              </div>
-              <div class="active tab-pane" id="facturadas">
-                  <?php  //include("ordenes.php") ?>
               </div>
             </div>
           </div>

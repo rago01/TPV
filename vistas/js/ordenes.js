@@ -24,3 +24,16 @@ $("#nuevoMetodoEntrega").change(function(){
 	}
 
 })
+
+
+/*=============================================
+BOTON EDITAR VENTA
+=============================================*/
+$(".tablas").on("click", ".btnEditarVenta", function(){
+
+	var id_venta = $(this).attr("id_venta");
+
+	window.location = "index.php?ruta=editar_venta&id_venta="+id_venta;
+
+
+})

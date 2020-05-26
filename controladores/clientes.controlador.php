@@ -87,11 +87,7 @@ class ControladorClientes{
                           'compras' => "0"
                           );
                           //echo '<br>' .var_dump($datos);
-                  if ($_POST['modulo_admin'] == 1) {
-                    $interfaz = 'clientes';
-                  }else {
-                    $interfaz = 'crear_venta';
-                  }
+          $interfaz = $_POST["modulo_admin"];
 
           $respuesta = ModeloClientes::mdlIngresarCliente($tabla, $datos);
 

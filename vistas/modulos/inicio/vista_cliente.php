@@ -30,13 +30,13 @@
                       $item = null;
                       $valor =  null;
 
-                      $ventas = ControladorVentas::ctrMostrarVentas($item, $valor);
-
+                      $ventas = ControladorOrdenes::ctrMostrarOrdenes($item, $valor);
+                      //var_dump($ventas);
                       if (!$ventas) {
                         echo '<input type="text" class="form-control" name="nuevaVenta" id="nuevaVenta" value="1" readonly>';
                       }else {
                         foreach ($ventas as $key => $value) {
-                          // code...
+                          //var_dump($ventas);
                         }
 
                         $codigo = $value['id_venta'] + 1;

@@ -55,7 +55,7 @@
                           WHERE v.id_cliente = '$cliente' AND resp_venta in (0) AND metodo_pago ='PENDIENTE' AND estado_venta = '2'";
                           $consulta_orden=Conexion::conectar()->prepare($sql_ordenes);
                           $consulta_orden->execute();
-                          echo $sql_ordenes;
+                          //echo $sql_ordenes;
                           foreach ($consulta_orden as $key => $value) {
 
                           $productos = json_decode($value['productos'], true);

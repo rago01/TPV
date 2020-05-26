@@ -33,15 +33,15 @@
           <div class="form-group">
             <div class="input-group">
               <span class="input-group-addon"> <strong>Celular</strong> </span>
-              <input type="text" class="form-control input-lg" name="celular" placeholder="Con este número ingresará al sistema"required>
-              <input type="hidden" name="modulo_admin" value="1">
+              <input type="text" class="form-control input-lg" name="celular" id="newCelular" placeholder="Con este número ingresará al sistema"required>
+              <input type="hidden" name="modulo_admin" value="<?php echo $_GET['ruta']; ?>">
             </div>
           </div>
 
           <div class="form-group">
             <div class="input-group">
               <span class="input-group-addon"> <strong>Email</strong> </span>
-              <input type="email" class="form-control input-lg" name="email" required>
+              <input type="email" class="form-control input-lg" name="email">
             </div>
           </div>
       </div>

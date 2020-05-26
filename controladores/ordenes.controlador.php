@@ -50,7 +50,7 @@ class ControladorOrdenes{
 
   			$datos = array(
   							 "id_cliente"=>$_SESSION['id_cliente'],
-  							 "resp_venta"=>"0",
+  							 "resp_venta"=>"20",
   						   "hora_venta"=>date("H:i:s"),
   							 "fecha_venta"=>date("Y-m-d"),
   						   "productos"=>$_POST["listaProductos"],
