@@ -74,7 +74,7 @@ class ControladorOrdenes{
   						confirmButtonText: "Cerrar"
   						}).then((result) => {
   								if (result.value) {
-  								window.location = "crear_venta";
+  								window.location = "inicio";
   								}
   							})
   				</script>';
