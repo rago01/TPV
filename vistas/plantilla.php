@@ -106,7 +106,7 @@ session_start();
 <!-- Site wrapper -->
 
 <?php
-//var_dump($_SESSION).'<br>';
+var_dump($_SESSION).'<br>';
 //var_dump($respuesta);
 //echo $_SESSION['estado_user'];
 //echo $_SESSION['iniciarSesion'];
