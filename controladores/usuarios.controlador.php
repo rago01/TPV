@@ -15,6 +15,7 @@ class ControladorUsuarios{
              //echo $encriptar.'<br>';
              //echo $respuesta['doc'];
              //echo $_POST["user"];
+             var_dump($respuesta);
               if($respuesta["doc"] == $_POST["user"] && $respuesta["clave"] == $encriptar ){
 
                     if ($respuesta['estado_user'] == 1) {
