@@ -11,7 +11,7 @@ class TablaProductos{
 
     $item = null;
     $valor = null;
-    $orden = "ventas"
+    $orden = "ventas";
 
    	$productos = ControladorProductosVenta::ctrMostrarProductoVenta($item, $valor, $orden);
  		//  var_dump($productos);
