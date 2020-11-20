@@ -7,7 +7,7 @@ class ControladorUsuarios{
           if (preg_match('/^[a-zA-Z0-9]+$/', $_POST['user']) &&
           preg_match('/^[a-zA-Z0-9]+$/', $_POST['clave1'])) {
              $encriptar = crypt($_POST["clave1"], '$6$rounds=5000$usesomesillystringforsalt$');
-             $tabla = "users";
+             echo $tabla = "users";
              echo $item = "doc";
              echo $valor = $_POST['user'];
              $respuesta = ModeloUsuarios::mdlMostrarUsuarios($tabla,$item,$valor);
