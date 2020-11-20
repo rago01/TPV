@@ -62,11 +62,11 @@
 
             $login = new ControladorUsuarios();
             $login -> ctrIngresoUsuario();
-        include ("forms/login_cliente.php");
-
-
-            $clienteLogin = new ControladorClientes();
-            $clienteLogin -> ctrIngresoCliente();
+        
+         include ("forms/login_cliente.php");
+         
+          $clienteLogin = new ControladorClientes();
+          $clienteLogin -> ctrIngresoCliente();
       ?>
 
 <!-- /.login-box -->

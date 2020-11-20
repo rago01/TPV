@@ -8,8 +8,8 @@ class ControladorUsuarios{
           preg_match('/^[a-zA-Z0-9]+$/', $_POST['clave1'])) {
              $encriptar = crypt($_POST["clave1"], '$6$rounds=5000$usesomesillystringforsalt$');
              $tabla = "users";
-             $item = "doc";
-             $valor = $_POST['user'];
+             echo $item = "doc";
+             echo $valor = $_POST['user'];
              $respuesta = ModeloUsuarios::mdlMostrarUsuarios($tabla,$item,$valor);
             // echo $respuesta["clave"].'<br>';
              //echo $encriptar.'<br>';
@@ -58,6 +58,8 @@ class ControladorUsuarios{
               }else{
             		echo '<br><div class="alert alert-danger">Error al ingresar, vuelve a intentarlo</div>';
             }
+          }else{
+            echo "Preg Match erroneo";
           }
         }
     }
