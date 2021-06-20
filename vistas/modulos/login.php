@@ -27,14 +27,9 @@
   <div class="login-box-body" style="border-radius: 10px">
     <p class="login-box-msg h4">Seleccione el tipo de usuario</p>
     <div class="row">
-      <div class="col-xs-6">
-        <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#logClient">
-          Cliente
-        </button>
-      </div>
-        <div class="col-xs-6">
+        <div class="col-xs-12">
           <button type="button" class="btn btn-danger pull-left" data-toggle="modal" data-target="#loginUser">
-            Colaborador
+            Ingresar
           </button>
         </div>
     </div>
